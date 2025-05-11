@@ -11,7 +11,7 @@
 !.yarn/versions
 
 # prisma cliet output
-/prisma/app/*
+/prisma/app/generated/
 
 # testing
 /coverage
