@@ -15,7 +15,7 @@ export default function SignUpWithGoogle() {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/", // replace with the protected route
+        callbackURL: "/room",
       });
     } catch (error) {
       console.error("Google sign up failed:", error);
