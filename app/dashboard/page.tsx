@@ -115,11 +115,16 @@ const page: React.FC = () => {
             onJoin={handleJoinSession}
             onEdit={handleEditSession}
           />
-          
-          <Link href="/schedule" className="flex flex-col items-center justify-center border-2 border-dashed border-muted rounded-lg p-6 h-full min-h-[200px] hover:border-primary/50 transition-colors">
+
+          <Link
+            href="/schedule"
+            className="flex flex-col items-center justify-center border-2 border-dashed border-muted rounded-lg p-6 h-full min-h-[200px] hover:border-primary/50 transition-colors"
+          >
             <Calendar className="h-10 w-10 mb-2 text-muted-foreground" />
             <p className="font-medium">Schedule a session</p>
-            <p className="text-sm text-muted-foreground mt-1">Plan your next recording</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Plan your next recording
+            </p>
           </Link>
         </div>
       </div>

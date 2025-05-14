@@ -1,11 +1,11 @@
+import React from 'react'
 
-
-export default function Home() {
+const page = () => {
   return (
     <div>
-      <p className="text-4xl font-bold text-center">
-        podmint
-      </p>
+      
     </div>
-  );
+  )
 }
+
+export default page

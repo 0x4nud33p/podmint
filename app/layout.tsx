@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 import "./globals.css";
+import AppHeader from "@/components/AppHeader";
+import BottomNav from "@/components/BottomNav";
+import Sidebar from "@/components/layout/Sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +37,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex min-h-screen flex-col ml-4">
+            <AppHeader />
+            <div className="flex flex-1">
+              <Sidebar className="hidden md:block" />
+              <main className="flex-1 pb-16 md:pb-0">
+                <div className="container p-6">{children}</div>
+              </main>
+            </div>
+            <BottomNav />
+          </div>
         </ThemeProvider>
       </body>
     </html>
