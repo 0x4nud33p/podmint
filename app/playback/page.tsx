@@ -1,8 +1,10 @@
+"use client";
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Download, Share } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import PlaybackControls from "@/components/playback/PlaybackControls";
 import { toast } from "@/hooks/use-toast";
 
@@ -89,7 +91,7 @@ const PlaybackPage: React.FC = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <Button variant="ghost" size="icon" asChild className="mr-2">
-            <Link to="/library">
+            <Link href="/library">
               <ArrowLeft className="h-5 w-5" />
             </Link>
           </Button>
