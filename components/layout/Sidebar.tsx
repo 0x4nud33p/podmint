@@ -14,7 +14,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const [active, setActive] = React.useState("dashboard");
 
   const navItems = [
-    { id: "dashboard", label: "Dashboard", icon: Home, path: "/" },
+    { id: "dashboard", label: "Dashboard", icon: Home, path: "/dashboard" },
     { id: "record", label: "Record New", icon: Mic, path: "/record" },
     // { id: "library", label: "My Library", icon: Headphones, path: "/library" },
     { id: "schedule", label: "Schedule", icon: Calendar, path: "/schedule" },
