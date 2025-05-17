@@ -15,7 +15,7 @@ export default function SignUpWithGoogle() {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/room",
+        callbackURL: "/dashboard",
       });
     } catch (error) {
       console.error("Google sign up failed:", error);
@@ -33,7 +33,7 @@ export default function SignUpWithGoogle() {
         transition={{ duration: 0.5 }}
       >
         <button
-          className="w-full border p-3 rounded-lg flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full border p-3 rounded-lg flex items-center justify-center disabled:opacity-50 hover:cursor-pointer disabled:cursor-not-allowed"
           onClick={handleGoogleSignUp}
           disabled={loading}
         >

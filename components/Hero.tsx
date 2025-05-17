@@ -1,8 +1,10 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mic, Calendar, Activity } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
   return (
     <section className="pt-20 pb-20 px-6 overflow-hidden">
       <div className="container mx-auto flex flex-col items-center text-center">
@@ -16,15 +18,16 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           <Button 
             size="lg" 
-            className="bg-accent text-white hover:bg-accent/90 hover-glow hover-scale btn-transition"
+            className="bg-accent text-white hover:bg-accent/90 hover-glow hover-scale btn-transition hover:cursor-pointer"
+            onClick={() => router.push("/signin")}
           >
             Get Started Free
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"/>
           </Button>
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-white/20 hover:bg-white/5 btn-transition hover-lift"
+            className="border-white/20 hover:bg-white/5 btn-transition hover-lift hover:cursor-pointer"
           >
             View Demo
           </Button>
