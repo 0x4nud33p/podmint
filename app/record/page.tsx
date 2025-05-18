@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -11,20 +11,145 @@ import RecordingControls from "@/components/recording/RecordingControls";
 import ParticipantTile from "@/components/recording/ParticipantTile";
 import GuestInvite from "@/components/recording/GuestInvite";
 import { toast } from "@/hooks/use-toast";
+import { createPeerConnection } from "@/utils/webrtc";
+import { socket } from "@/utils/signaling";
+
+interface Participant {
+  id: string;
+  name: string;
+  stream: MediaStream;
+  isHost?: boolean;
+  isMuted: boolean;
+}
 
 const RecordingStudio: React.FC = () => {
-  const [isRecording, setIsRecording] = React.useState(false);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const [isMuted, setIsMuted] = React.useState(false);
-  const [recordingTime, setRecordingTime] = React.useState("00:00");
-  const [showInvite, setShowInvite] = React.useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [recordingTime, setRecordingTime] = useState("00:00");
+  const [showInvite, setShowInvite] = useState(false);
+  const [participants, setParticipants] = useState<Participant[]>([]);
+
+  const localVideoRef = useRef<HTMLVideoElement>(null);
+  const remoteVideoRef = useRef<HTMLVideoElement>(null);
+  const localStreamRef = useRef<MediaStream | null>(null);
+  const pcRef = useRef<RTCPeerConnection | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const initializeMedia = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
+
+        localStreamRef.current = stream;
+        if (localVideoRef.current) {
+          localVideoRef.current.srcObject = stream;
+        }
+
+        // Add host to participants
+        setParticipants((prev) => [
+          ...prev,
+          {
+            id: "host",
+            name: "You (Host)",
+            stream,
+            isHost: true,
+            isMuted: false,
+          },
+        ]);
+      } catch (error) {
+        toast({
+          variant: "destructive",
+          title: "Media Error",
+          description: "Failed to access camera and microphone",
+        });
+      }
+    };
+
+    initializeMedia();
+
+    socket.on("connect", () => {
+      socket.emit("join", "room1");
+    });
+
+    socket.on("user-joined", async (userId: string) => {
+      const pc = createPeerConnection(handleRemoteTrack);
+      pcRef.current = pc;
+
+      localStreamRef.current?.getTracks().forEach((track) => {
+        pc.addTrack(track, localStreamRef.current!);
+      });
+
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+
+      socket.emit("signal", {
+        room: "room1",
+        target: userId,
+        data: { offer },
+      });
+    });
+
+    socket.on("signal", async ({ data, senderId }) => {
+      if (!pcRef.current) {
+        const pc = createPeerConnection(handleRemoteTrack);
+        pcRef.current = pc;
+      }
+
+      if (data.offer) {
+        await pcRef.current.setRemoteDescription(data.offer);
+        const answer = await pcRef.current.createAnswer();
+        await pcRef.current.setLocalDescription(answer);
+
+        socket.emit("signal", {
+          room: "room1",
+          target: senderId,
+          data: { answer },
+        });
+      }
+
+      if (data.answer) {
+        await pcRef.current.setRemoteDescription(data.answer);
+      }
+
+      if (data.candidate) {
+        await pcRef.current.addIceCandidate(data.candidate);
+      }
+    });
+
+    return () => {
+      socket.off("connect");
+      socket.off("user-joined");
+      socket.off("signal");
+      stopRecording();
+      localStreamRef.current?.getTracks().forEach((track) => track.stop());
+      pcRef.current?.close();
+    };
+  }, []);
+
+  const handleRemoteTrack = (event: RTCTrackEvent) => {
+    const remoteStream = event.streams[0];
+
+    setParticipants((prev) => [
+      ...prev,
+      {
+        id: Math.random().toString(36).substr(2, 9),
+        name: "Guest",
+        stream: remoteStream,
+        isMuted: false,
+      },
+    ]);
+  };
 
   const startRecording = () => {
     setIsRecording(true);
     setIsPaused(false);
-    // Simulate a timer
     let seconds = 0;
-    const interval = setInterval(() => {
+
+    timerRef.current = setInterval(() => {
       seconds++;
       const mins = Math.floor(seconds / 60);
       const secs = seconds % 60;
@@ -35,9 +160,6 @@ const RecordingStudio: React.FC = () => {
       );
     }, 1000);
 
-    // Store interval ID in ref for cleanup
-    (window as any).recordingInterval = interval;
-
     toast({
       title: "Recording started",
       description: "Your session is now being recorded",
@@ -46,17 +168,13 @@ const RecordingStudio: React.FC = () => {
 
   const pauseRecording = () => {
     if (isPaused) {
-      // Resume
       setIsPaused(false);
-      // Restart the timer...
-      toast({
-        title: "Recording resumed",
-      });
+      startRecording();
     } else {
-      // Pause
       setIsPaused(true);
-      // Pause the timer...
-      clearInterval((window as any).recordingInterval);
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
       toast({
         title: "Recording paused",
       });
@@ -67,7 +185,9 @@ const RecordingStudio: React.FC = () => {
     setIsRecording(false);
     setIsPaused(false);
     setRecordingTime("00:00");
-    clearInterval((window as any).recordingInterval);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
 
     toast({
       title: "Recording stopped",
@@ -76,9 +196,15 @@ const RecordingStudio: React.FC = () => {
   };
 
   const toggleMute = () => {
-    setIsMuted(!isMuted);
+    const newMuteState = !isMuted;
+    setIsMuted(newMuteState);
+
+    localStreamRef.current?.getAudioTracks().forEach((track) => {
+      track.enabled = !newMuteState;
+    });
+
     toast({
-      title: isMuted ? "Microphone activated" : "Microphone muted",
+      title: newMuteState ? "Microphone muted" : "Microphone activated",
     });
   };
 
@@ -121,59 +247,59 @@ const RecordingStudio: React.FC = () => {
 
             <TabsContent value="video" className="mt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <ParticipantTile
-                  name="You (Host)"
-                  isSpeaking={!isMuted}
-                  isMuted={isMuted}
-                  isHost={true}
-                />
-                <ParticipantTile
-                  name="Jane Smith"
-                  avatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
-                  isSpeaking={true}
-                  isMuted={false}
-                />
+                <div className="relative w-full h-full rounded-lg overflow-hidden border shadow">
+                  <video
+                    ref={localVideoRef}
+                    autoPlay
+                    playsInline
+                    muted
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                  <div className="absolute bottom-2 left-2 bg-black/50 text-white text-sm px-2 py-1 rounded">
+                    You (Host)
+                  </div>
+                </div>
+
+                {participants
+                  .filter((p) => !p.isHost)
+                  .map((participant) => (
+                    <ParticipantTile
+                      key={participant.id}
+                      name={participant.name}
+                      isSpeaking={!participant.isMuted}
+                      isMuted={participant.isMuted}
+                      isHost={participant.isHost}
+                    />
+                  ))}
               </div>
             </TabsContent>
 
             <TabsContent value="audio" className="mt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col items-center justify-center p-8 bg-muted rounded-lg">
-                  <div className="audio-wave mb-4">
-                    {[3, 5, 8, 12, 8, 5, 3].map((height, i) => (
-                      <div
-                        key={i}
-                        className="audio-wave-bar animate-wave"
-                        style={{
-                          height: `${height * 3}px`,
-                          animationDelay: `${i * 0.1}s`,
-                          opacity: isMuted ? 0.3 : 1,
-                        }}
-                      />
-                    ))}
+                {participants.map((participant) => (
+                  <div
+                    key={participant.id}
+                    className="flex flex-col items-center justify-center p-8 bg-muted rounded-lg"
+                  >
+                    <div className="audio-wave mb-4">
+                      {[3, 5, 8, 12, 8, 5, 3].map((height, i) => (
+                        <div
+                          key={i}
+                          className="audio-wave-bar animate-wave"
+                          style={{
+                            height: `${height * 3}px`,
+                            animationDelay: `${i * 0.1}s`,
+                            opacity: participant.isMuted ? 0.3 : 1,
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <p className="font-semibold">{participant.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {participant.isMuted ? "Muted" : "Speaking"}
+                    </p>
                   </div>
-                  <p className="font-semibold">You (Host)</p>
-                  <p className="text-sm text-muted-foreground">
-                    {isMuted ? "Muted" : "Speaking"}
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center justify-center p-8 bg-muted rounded-lg">
-                  <div className="audio-wave mb-4">
-                    {[3, 7, 10, 15, 10, 7, 3].map((height, i) => (
-                      <div
-                        key={i}
-                        className="audio-wave-bar animate-wave"
-                        style={{
-                          height: `${height * 3}px`,
-                          animationDelay: `${i * 0.1}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <p className="font-semibold">Jane Smith</p>
-                  <p className="text-sm text-muted-foreground">Speaking</p>
-                </div>
+                ))}
               </div>
             </TabsContent>
           </Tabs>
