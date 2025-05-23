@@ -58,9 +58,9 @@ export default function ScheduleComponent() {
   };
 
   return (
-    <div className="space-y-4 max-w-7xl mx-auto">
+    <div className="py-6 max-w-7xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h2 className="text-xl sm:text-2xl font-bold">Schedule</h2>
+        <h2 className="text-2xl font-bold">Schedule</h2>
         <Dialog>
           <DialogTrigger asChild>
             <Button className="w-full sm:w-auto">
@@ -119,18 +119,18 @@ export default function ScheduleComponent() {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-        <Card className="lg:col-span-1">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <Card className="w-full lg:w-1/3">
           <CardHeader>
             <CardTitle>Calendar</CardTitle>
             <CardDescription>Select a date to view events</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-2">
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
-              className="rounded-md border"
+              className="rounded-md border p-1"
               classNames={{
                 day: "h-9 w-9 text-sm",
                 head_cell: "text-muted-foreground text-sm font-normal",
@@ -139,7 +139,7 @@ export default function ScheduleComponent() {
           </CardContent>
         </Card>
 
-        <div className="lg:col-span-2 space-y-4">
+        <div className="w-full lg:w-2/3 space-y-4">
           <Card>
             <CardHeader>
               <CardTitle>Scheduled Events</CardTitle>
@@ -155,7 +155,7 @@ export default function ScheduleComponent() {
                     date?.toLocaleDateString()
                 )
                 .map((event) => (
-                  <Card key={event.id}>
+                  <Card key={event.id} className="bg-muted/40">
                     <CardContent className="p-4">
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div className="flex-1">
@@ -180,7 +180,7 @@ export default function ScheduleComponent() {
                                 key={participant}
                                 className="px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs sm:text-sm"
                               >
-                                {participant}
+                                {participant.trim()}
                               </span>
                             ))}
                           </div>
