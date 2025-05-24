@@ -136,66 +136,6 @@ export default function SettingsComponent() {
           </div>
         </CardContent>
       </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Palette className="h-5 w-5" />
-            Preferences
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <Label>Dark Mode</Label>
-              <p className="text-sm text-muted-foreground">
-                Customize your theme preference
-              </p>
-            </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline">System</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>Light</DropdownMenuItem>
-                <DropdownMenuItem>Dark</DropdownMenuItem>
-                <DropdownMenuItem>System</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <Label>Notifications</Label>
-              <p className="text-sm text-muted-foreground">
-                Manage your notification preferences
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Bell className="h-5 w-5 text-muted-foreground" />
-              <Switch />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="border-destructive">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-destructive">
-            <Trash2 className="h-5 w-5" />
-            Danger Zone
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <Label>Delete Account</Label>
-            <p className="text-sm text-muted-foreground">
-              Permanently delete your account and all associated data
-            </p>
-          </div>
-          <Button variant="destructive">Delete Account</Button>
-        </CardContent>
-      </Card>
     </div>
   );
 }
