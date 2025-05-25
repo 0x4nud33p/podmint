@@ -166,6 +166,34 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RecordingSessionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  createdAt: 'createdAt',
+  scheduledAt: 'scheduledAt',
+  status: 'status',
+  hostId: 'hostId'
+};
+
+exports.Prisma.ParticipantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  isGuest: 'isGuest',
+  userId: 'userId',
+  sessionId: 'sessionId'
+};
+
+exports.Prisma.MediaTrackScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  url: 'url',
+  duration: 'duration',
+  recordedAt: 'recordedAt',
+  participantId: 'participantId',
+  sessionId: 'sessionId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -186,7 +214,10 @@ exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  RecordingSession: 'RecordingSession',
+  Participant: 'Participant',
+  MediaTrack: 'MediaTrack'
 };
 
 /**
