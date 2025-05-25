@@ -20,6 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { toast } from "sonner";
 
 interface ScheduledEvent {
   id: string;
@@ -30,30 +31,47 @@ interface ScheduledEvent {
 
 export default function ScheduleComponent() {
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [events, setEvents] = useState<ScheduledEvent[]>([
-    {
-      id: "1",
-      title: "Team Meeting",
-      date: new Date(),
-      participants: ["You (Host)", "Jane Smith"],
-    },
-  ]);
+  const [events, setEvents] = useState<ScheduledEvent[]>([]);
   const [newEvent, setNewEvent] = useState({
     title: "",
     date: new Date(),
     participants: "",
   });
 
-  const handleAddEvent = () => {
-    setEvents([
-      ...events,
-      {
-        id: (events.length + 1).toString(),
+  const handleAddEvent = async () => {
+    if (!newEvent.title || !newEvent.date || !newEvent.participants) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    if (newEvent.date < new Date()) {
+      toast.error("Event date cannot be in the past.");
+      return;
+    }
+    if (newEvent.participants.trim() === "") {
+      toast.error("Please add at least one participant.");
+      return;
+    }
+    const participantsArray = newEvent.participants
+      .split(",")
+      .map((p) => p.trim())
+      .filter((p) => p !== "");
+    const response = await fetch("/api/events/schedule", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         title: newEvent.title,
         date: newEvent.date,
-        participants: newEvent.participants.split(","),
-      },
-    ]);
+        participants: participantsArray,
+      }),
+    });
+    if (!response.ok) {
+      toast.error("Failed to schedule event.");
+      return;
+    }
+    const data = await response.json();
+    setEvents((prevEvents) => [...prevEvents, data]);
     setNewEvent({ title: "", date: new Date(), participants: "" });
   };
 

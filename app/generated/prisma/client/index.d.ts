@@ -33,6 +33,21 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
+/**
+ * Model RecordingSession
+ * 
+ */
+export type RecordingSession = $Result.DefaultSelection<Prisma.$RecordingSessionPayload>
+/**
+ * Model Participant
+ * 
+ */
+export type Participant = $Result.DefaultSelection<Prisma.$ParticipantPayload>
+/**
+ * Model MediaTrack
+ * 
+ */
+export type MediaTrack = $Result.DefaultSelection<Prisma.$MediaTrackPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +213,36 @@ export class PrismaClient<
     * ```
     */
   get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.recordingSession`: Exposes CRUD operations for the **RecordingSession** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RecordingSessions
+    * const recordingSessions = await prisma.recordingSession.findMany()
+    * ```
+    */
+  get recordingSession(): Prisma.RecordingSessionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.participant`: Exposes CRUD operations for the **Participant** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Participants
+    * const participants = await prisma.participant.findMany()
+    * ```
+    */
+  get participant(): Prisma.ParticipantDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mediaTrack`: Exposes CRUD operations for the **MediaTrack** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MediaTracks
+    * const mediaTracks = await prisma.mediaTrack.findMany()
+    * ```
+    */
+  get mediaTrack(): Prisma.MediaTrackDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +686,10 @@ export namespace Prisma {
     User: 'User',
     Session: 'Session',
     Account: 'Account',
-    Verification: 'Verification'
+    Verification: 'Verification',
+    RecordingSession: 'RecordingSession',
+    Participant: 'Participant',
+    MediaTrack: 'MediaTrack'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification"
+      modelProps: "user" | "session" | "account" | "verification" | "recordingSession" | "participant" | "mediaTrack"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +1008,228 @@ export namespace Prisma {
           }
         }
       }
+      RecordingSession: {
+        payload: Prisma.$RecordingSessionPayload<ExtArgs>
+        fields: Prisma.RecordingSessionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RecordingSessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RecordingSessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>
+          }
+          findFirst: {
+            args: Prisma.RecordingSessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RecordingSessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>
+          }
+          findMany: {
+            args: Prisma.RecordingSessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>[]
+          }
+          create: {
+            args: Prisma.RecordingSessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>
+          }
+          createMany: {
+            args: Prisma.RecordingSessionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RecordingSessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>[]
+          }
+          delete: {
+            args: Prisma.RecordingSessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>
+          }
+          update: {
+            args: Prisma.RecordingSessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>
+          }
+          deleteMany: {
+            args: Prisma.RecordingSessionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RecordingSessionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RecordingSessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>[]
+          }
+          upsert: {
+            args: Prisma.RecordingSessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecordingSessionPayload>
+          }
+          aggregate: {
+            args: Prisma.RecordingSessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRecordingSession>
+          }
+          groupBy: {
+            args: Prisma.RecordingSessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RecordingSessionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RecordingSessionCountArgs<ExtArgs>
+            result: $Utils.Optional<RecordingSessionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Participant: {
+        payload: Prisma.$ParticipantPayload<ExtArgs>
+        fields: Prisma.ParticipantFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ParticipantFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ParticipantFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>
+          }
+          findFirst: {
+            args: Prisma.ParticipantFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ParticipantFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>
+          }
+          findMany: {
+            args: Prisma.ParticipantFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>[]
+          }
+          create: {
+            args: Prisma.ParticipantCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>
+          }
+          createMany: {
+            args: Prisma.ParticipantCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ParticipantCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>[]
+          }
+          delete: {
+            args: Prisma.ParticipantDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>
+          }
+          update: {
+            args: Prisma.ParticipantUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>
+          }
+          deleteMany: {
+            args: Prisma.ParticipantDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ParticipantUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ParticipantUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>[]
+          }
+          upsert: {
+            args: Prisma.ParticipantUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParticipantPayload>
+          }
+          aggregate: {
+            args: Prisma.ParticipantAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateParticipant>
+          }
+          groupBy: {
+            args: Prisma.ParticipantGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ParticipantGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ParticipantCountArgs<ExtArgs>
+            result: $Utils.Optional<ParticipantCountAggregateOutputType> | number
+          }
+        }
+      }
+      MediaTrack: {
+        payload: Prisma.$MediaTrackPayload<ExtArgs>
+        fields: Prisma.MediaTrackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MediaTrackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MediaTrackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>
+          }
+          findFirst: {
+            args: Prisma.MediaTrackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MediaTrackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>
+          }
+          findMany: {
+            args: Prisma.MediaTrackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>[]
+          }
+          create: {
+            args: Prisma.MediaTrackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>
+          }
+          createMany: {
+            args: Prisma.MediaTrackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MediaTrackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>[]
+          }
+          delete: {
+            args: Prisma.MediaTrackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>
+          }
+          update: {
+            args: Prisma.MediaTrackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>
+          }
+          deleteMany: {
+            args: Prisma.MediaTrackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MediaTrackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MediaTrackUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>[]
+          }
+          upsert: {
+            args: Prisma.MediaTrackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaTrackPayload>
+          }
+          aggregate: {
+            args: Prisma.MediaTrackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMediaTrack>
+          }
+          groupBy: {
+            args: Prisma.MediaTrackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MediaTrackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MediaTrackCountArgs<ExtArgs>
+            result: $Utils.Optional<MediaTrackCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1318,9 @@ export namespace Prisma {
     session?: SessionOmit
     account?: AccountOmit
     verification?: VerificationOmit
+    recordingSession?: RecordingSessionOmit
+    participant?: ParticipantOmit
+    mediaTrack?: MediaTrackOmit
   }
 
   /* Types for Logging */
@@ -1144,11 +1417,15 @@ export namespace Prisma {
   export type UserCountOutputType = {
     sessions: number
     accounts: number
+    recordings: number
+    participants: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    recordings?: boolean | UserCountOutputTypeCountRecordingsArgs
+    participants?: boolean | UserCountOutputTypeCountParticipantsArgs
   }
 
   // Custom InputTypes
@@ -1174,6 +1451,91 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccountWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRecordingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecordingSessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParticipantWhereInput
+  }
+
+
+  /**
+   * Count Type RecordingSessionCountOutputType
+   */
+
+  export type RecordingSessionCountOutputType = {
+    participants: number
+    tracks: number
+  }
+
+  export type RecordingSessionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    participants?: boolean | RecordingSessionCountOutputTypeCountParticipantsArgs
+    tracks?: boolean | RecordingSessionCountOutputTypeCountTracksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RecordingSessionCountOutputType without action
+   */
+  export type RecordingSessionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSessionCountOutputType
+     */
+    select?: RecordingSessionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RecordingSessionCountOutputType without action
+   */
+  export type RecordingSessionCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParticipantWhereInput
+  }
+
+  /**
+   * RecordingSessionCountOutputType without action
+   */
+  export type RecordingSessionCountOutputTypeCountTracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MediaTrackWhereInput
+  }
+
+
+  /**
+   * Count Type ParticipantCountOutputType
+   */
+
+  export type ParticipantCountOutputType = {
+    tracks: number
+  }
+
+  export type ParticipantCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tracks?: boolean | ParticipantCountOutputTypeCountTracksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ParticipantCountOutputType without action
+   */
+  export type ParticipantCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParticipantCountOutputType
+     */
+    select?: ParticipantCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ParticipantCountOutputType without action
+   */
+  export type ParticipantCountOutputTypeCountTracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MediaTrackWhereInput
   }
 
 
@@ -1363,6 +1725,8 @@ export namespace Prisma {
     updatedAt?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    recordings?: boolean | User$recordingsArgs<ExtArgs>
+    participants?: boolean | User$participantsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1400,6 +1764,8 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    recordings?: boolean | User$recordingsArgs<ExtArgs>
+    participants?: boolean | User$participantsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1410,6 +1776,8 @@ export namespace Prisma {
     objects: {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      recordings: Prisma.$RecordingSessionPayload<ExtArgs>[]
+      participants: Prisma.$ParticipantPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1815,6 +2183,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recordings<T extends User$recordingsArgs<ExtArgs> = {}>(args?: Subset<T, User$recordingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    participants<T extends User$participantsArgs<ExtArgs> = {}>(args?: Subset<T, User$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2284,6 +2654,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.recordings
+   */
+  export type User$recordingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    where?: RecordingSessionWhereInput
+    orderBy?: RecordingSessionOrderByWithRelationInput | RecordingSessionOrderByWithRelationInput[]
+    cursor?: RecordingSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecordingSessionScalarFieldEnum | RecordingSessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.participants
+   */
+  export type User$participantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    where?: ParticipantWhereInput
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    cursor?: ParticipantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
   }
 
   /**
@@ -5573,6 +5991,3389 @@ export namespace Prisma {
 
 
   /**
+   * Model RecordingSession
+   */
+
+  export type AggregateRecordingSession = {
+    _count: RecordingSessionCountAggregateOutputType | null
+    _min: RecordingSessionMinAggregateOutputType | null
+    _max: RecordingSessionMaxAggregateOutputType | null
+  }
+
+  export type RecordingSessionMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    scheduledAt: Date | null
+    status: string | null
+    hostId: string | null
+  }
+
+  export type RecordingSessionMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
+    scheduledAt: Date | null
+    status: string | null
+    hostId: string | null
+  }
+
+  export type RecordingSessionCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    createdAt: number
+    scheduledAt: number
+    status: number
+    hostId: number
+    _all: number
+  }
+
+
+  export type RecordingSessionMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    scheduledAt?: true
+    status?: true
+    hostId?: true
+  }
+
+  export type RecordingSessionMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    scheduledAt?: true
+    status?: true
+    hostId?: true
+  }
+
+  export type RecordingSessionCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    createdAt?: true
+    scheduledAt?: true
+    status?: true
+    hostId?: true
+    _all?: true
+  }
+
+  export type RecordingSessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecordingSession to aggregate.
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecordingSessions to fetch.
+     */
+    orderBy?: RecordingSessionOrderByWithRelationInput | RecordingSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RecordingSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecordingSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecordingSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RecordingSessions
+    **/
+    _count?: true | RecordingSessionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RecordingSessionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RecordingSessionMaxAggregateInputType
+  }
+
+  export type GetRecordingSessionAggregateType<T extends RecordingSessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecordingSession]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecordingSession[P]>
+      : GetScalarType<T[P], AggregateRecordingSession[P]>
+  }
+
+
+
+
+  export type RecordingSessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecordingSessionWhereInput
+    orderBy?: RecordingSessionOrderByWithAggregationInput | RecordingSessionOrderByWithAggregationInput[]
+    by: RecordingSessionScalarFieldEnum[] | RecordingSessionScalarFieldEnum
+    having?: RecordingSessionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RecordingSessionCountAggregateInputType | true
+    _min?: RecordingSessionMinAggregateInputType
+    _max?: RecordingSessionMaxAggregateInputType
+  }
+
+  export type RecordingSessionGroupByOutputType = {
+    id: string
+    title: string
+    description: string | null
+    createdAt: Date
+    scheduledAt: Date | null
+    status: string
+    hostId: string
+    _count: RecordingSessionCountAggregateOutputType | null
+    _min: RecordingSessionMinAggregateOutputType | null
+    _max: RecordingSessionMaxAggregateOutputType | null
+  }
+
+  type GetRecordingSessionGroupByPayload<T extends RecordingSessionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RecordingSessionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RecordingSessionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RecordingSessionGroupByOutputType[P]>
+            : GetScalarType<T[P], RecordingSessionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RecordingSessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    scheduledAt?: boolean
+    status?: boolean
+    hostId?: boolean
+    host?: boolean | UserDefaultArgs<ExtArgs>
+    participants?: boolean | RecordingSession$participantsArgs<ExtArgs>
+    tracks?: boolean | RecordingSession$tracksArgs<ExtArgs>
+    _count?: boolean | RecordingSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["recordingSession"]>
+
+  export type RecordingSessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    scheduledAt?: boolean
+    status?: boolean
+    hostId?: boolean
+    host?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["recordingSession"]>
+
+  export type RecordingSessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    scheduledAt?: boolean
+    status?: boolean
+    hostId?: boolean
+    host?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["recordingSession"]>
+
+  export type RecordingSessionSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
+    scheduledAt?: boolean
+    status?: boolean
+    hostId?: boolean
+  }
+
+  export type RecordingSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "createdAt" | "scheduledAt" | "status" | "hostId", ExtArgs["result"]["recordingSession"]>
+  export type RecordingSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    host?: boolean | UserDefaultArgs<ExtArgs>
+    participants?: boolean | RecordingSession$participantsArgs<ExtArgs>
+    tracks?: boolean | RecordingSession$tracksArgs<ExtArgs>
+    _count?: boolean | RecordingSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type RecordingSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    host?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type RecordingSessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    host?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $RecordingSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RecordingSession"
+    objects: {
+      host: Prisma.$UserPayload<ExtArgs>
+      participants: Prisma.$ParticipantPayload<ExtArgs>[]
+      tracks: Prisma.$MediaTrackPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string | null
+      createdAt: Date
+      scheduledAt: Date | null
+      status: string
+      hostId: string
+    }, ExtArgs["result"]["recordingSession"]>
+    composites: {}
+  }
+
+  type RecordingSessionGetPayload<S extends boolean | null | undefined | RecordingSessionDefaultArgs> = $Result.GetResult<Prisma.$RecordingSessionPayload, S>
+
+  type RecordingSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RecordingSessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RecordingSessionCountAggregateInputType | true
+    }
+
+  export interface RecordingSessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RecordingSession'], meta: { name: 'RecordingSession' } }
+    /**
+     * Find zero or one RecordingSession that matches the filter.
+     * @param {RecordingSessionFindUniqueArgs} args - Arguments to find a RecordingSession
+     * @example
+     * // Get one RecordingSession
+     * const recordingSession = await prisma.recordingSession.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RecordingSessionFindUniqueArgs>(args: SelectSubset<T, RecordingSessionFindUniqueArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RecordingSession that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RecordingSessionFindUniqueOrThrowArgs} args - Arguments to find a RecordingSession
+     * @example
+     * // Get one RecordingSession
+     * const recordingSession = await prisma.recordingSession.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RecordingSessionFindUniqueOrThrowArgs>(args: SelectSubset<T, RecordingSessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecordingSession that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionFindFirstArgs} args - Arguments to find a RecordingSession
+     * @example
+     * // Get one RecordingSession
+     * const recordingSession = await prisma.recordingSession.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RecordingSessionFindFirstArgs>(args?: SelectSubset<T, RecordingSessionFindFirstArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecordingSession that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionFindFirstOrThrowArgs} args - Arguments to find a RecordingSession
+     * @example
+     * // Get one RecordingSession
+     * const recordingSession = await prisma.recordingSession.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RecordingSessionFindFirstOrThrowArgs>(args?: SelectSubset<T, RecordingSessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RecordingSessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RecordingSessions
+     * const recordingSessions = await prisma.recordingSession.findMany()
+     * 
+     * // Get first 10 RecordingSessions
+     * const recordingSessions = await prisma.recordingSession.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const recordingSessionWithIdOnly = await prisma.recordingSession.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RecordingSessionFindManyArgs>(args?: SelectSubset<T, RecordingSessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RecordingSession.
+     * @param {RecordingSessionCreateArgs} args - Arguments to create a RecordingSession.
+     * @example
+     * // Create one RecordingSession
+     * const RecordingSession = await prisma.recordingSession.create({
+     *   data: {
+     *     // ... data to create a RecordingSession
+     *   }
+     * })
+     * 
+     */
+    create<T extends RecordingSessionCreateArgs>(args: SelectSubset<T, RecordingSessionCreateArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RecordingSessions.
+     * @param {RecordingSessionCreateManyArgs} args - Arguments to create many RecordingSessions.
+     * @example
+     * // Create many RecordingSessions
+     * const recordingSession = await prisma.recordingSession.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RecordingSessionCreateManyArgs>(args?: SelectSubset<T, RecordingSessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RecordingSessions and returns the data saved in the database.
+     * @param {RecordingSessionCreateManyAndReturnArgs} args - Arguments to create many RecordingSessions.
+     * @example
+     * // Create many RecordingSessions
+     * const recordingSession = await prisma.recordingSession.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RecordingSessions and only return the `id`
+     * const recordingSessionWithIdOnly = await prisma.recordingSession.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RecordingSessionCreateManyAndReturnArgs>(args?: SelectSubset<T, RecordingSessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RecordingSession.
+     * @param {RecordingSessionDeleteArgs} args - Arguments to delete one RecordingSession.
+     * @example
+     * // Delete one RecordingSession
+     * const RecordingSession = await prisma.recordingSession.delete({
+     *   where: {
+     *     // ... filter to delete one RecordingSession
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RecordingSessionDeleteArgs>(args: SelectSubset<T, RecordingSessionDeleteArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RecordingSession.
+     * @param {RecordingSessionUpdateArgs} args - Arguments to update one RecordingSession.
+     * @example
+     * // Update one RecordingSession
+     * const recordingSession = await prisma.recordingSession.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RecordingSessionUpdateArgs>(args: SelectSubset<T, RecordingSessionUpdateArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RecordingSessions.
+     * @param {RecordingSessionDeleteManyArgs} args - Arguments to filter RecordingSessions to delete.
+     * @example
+     * // Delete a few RecordingSessions
+     * const { count } = await prisma.recordingSession.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RecordingSessionDeleteManyArgs>(args?: SelectSubset<T, RecordingSessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RecordingSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RecordingSessions
+     * const recordingSession = await prisma.recordingSession.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RecordingSessionUpdateManyArgs>(args: SelectSubset<T, RecordingSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RecordingSessions and returns the data updated in the database.
+     * @param {RecordingSessionUpdateManyAndReturnArgs} args - Arguments to update many RecordingSessions.
+     * @example
+     * // Update many RecordingSessions
+     * const recordingSession = await prisma.recordingSession.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RecordingSessions and only return the `id`
+     * const recordingSessionWithIdOnly = await prisma.recordingSession.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RecordingSessionUpdateManyAndReturnArgs>(args: SelectSubset<T, RecordingSessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RecordingSession.
+     * @param {RecordingSessionUpsertArgs} args - Arguments to update or create a RecordingSession.
+     * @example
+     * // Update or create a RecordingSession
+     * const recordingSession = await prisma.recordingSession.upsert({
+     *   create: {
+     *     // ... data to create a RecordingSession
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RecordingSession we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RecordingSessionUpsertArgs>(args: SelectSubset<T, RecordingSessionUpsertArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RecordingSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionCountArgs} args - Arguments to filter RecordingSessions to count.
+     * @example
+     * // Count the number of RecordingSessions
+     * const count = await prisma.recordingSession.count({
+     *   where: {
+     *     // ... the filter for the RecordingSessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends RecordingSessionCountArgs>(
+      args?: Subset<T, RecordingSessionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RecordingSessionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RecordingSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RecordingSessionAggregateArgs>(args: Subset<T, RecordingSessionAggregateArgs>): Prisma.PrismaPromise<GetRecordingSessionAggregateType<T>>
+
+    /**
+     * Group by RecordingSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecordingSessionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RecordingSessionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RecordingSessionGroupByArgs['orderBy'] }
+        : { orderBy?: RecordingSessionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RecordingSessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecordingSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RecordingSession model
+   */
+  readonly fields: RecordingSessionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RecordingSession.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RecordingSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    host<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    participants<T extends RecordingSession$participantsArgs<ExtArgs> = {}>(args?: Subset<T, RecordingSession$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tracks<T extends RecordingSession$tracksArgs<ExtArgs> = {}>(args?: Subset<T, RecordingSession$tracksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RecordingSession model
+   */
+  interface RecordingSessionFieldRefs {
+    readonly id: FieldRef<"RecordingSession", 'String'>
+    readonly title: FieldRef<"RecordingSession", 'String'>
+    readonly description: FieldRef<"RecordingSession", 'String'>
+    readonly createdAt: FieldRef<"RecordingSession", 'DateTime'>
+    readonly scheduledAt: FieldRef<"RecordingSession", 'DateTime'>
+    readonly status: FieldRef<"RecordingSession", 'String'>
+    readonly hostId: FieldRef<"RecordingSession", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RecordingSession findUnique
+   */
+  export type RecordingSessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which RecordingSession to fetch.
+     */
+    where: RecordingSessionWhereUniqueInput
+  }
+
+  /**
+   * RecordingSession findUniqueOrThrow
+   */
+  export type RecordingSessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which RecordingSession to fetch.
+     */
+    where: RecordingSessionWhereUniqueInput
+  }
+
+  /**
+   * RecordingSession findFirst
+   */
+  export type RecordingSessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which RecordingSession to fetch.
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecordingSessions to fetch.
+     */
+    orderBy?: RecordingSessionOrderByWithRelationInput | RecordingSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecordingSessions.
+     */
+    cursor?: RecordingSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecordingSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecordingSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecordingSessions.
+     */
+    distinct?: RecordingSessionScalarFieldEnum | RecordingSessionScalarFieldEnum[]
+  }
+
+  /**
+   * RecordingSession findFirstOrThrow
+   */
+  export type RecordingSessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which RecordingSession to fetch.
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecordingSessions to fetch.
+     */
+    orderBy?: RecordingSessionOrderByWithRelationInput | RecordingSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecordingSessions.
+     */
+    cursor?: RecordingSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecordingSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecordingSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecordingSessions.
+     */
+    distinct?: RecordingSessionScalarFieldEnum | RecordingSessionScalarFieldEnum[]
+  }
+
+  /**
+   * RecordingSession findMany
+   */
+  export type RecordingSessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which RecordingSessions to fetch.
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecordingSessions to fetch.
+     */
+    orderBy?: RecordingSessionOrderByWithRelationInput | RecordingSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RecordingSessions.
+     */
+    cursor?: RecordingSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecordingSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecordingSessions.
+     */
+    skip?: number
+    distinct?: RecordingSessionScalarFieldEnum | RecordingSessionScalarFieldEnum[]
+  }
+
+  /**
+   * RecordingSession create
+   */
+  export type RecordingSessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RecordingSession.
+     */
+    data: XOR<RecordingSessionCreateInput, RecordingSessionUncheckedCreateInput>
+  }
+
+  /**
+   * RecordingSession createMany
+   */
+  export type RecordingSessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RecordingSessions.
+     */
+    data: RecordingSessionCreateManyInput | RecordingSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RecordingSession createManyAndReturn
+   */
+  export type RecordingSessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * The data used to create many RecordingSessions.
+     */
+    data: RecordingSessionCreateManyInput | RecordingSessionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RecordingSession update
+   */
+  export type RecordingSessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RecordingSession.
+     */
+    data: XOR<RecordingSessionUpdateInput, RecordingSessionUncheckedUpdateInput>
+    /**
+     * Choose, which RecordingSession to update.
+     */
+    where: RecordingSessionWhereUniqueInput
+  }
+
+  /**
+   * RecordingSession updateMany
+   */
+  export type RecordingSessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RecordingSessions.
+     */
+    data: XOR<RecordingSessionUpdateManyMutationInput, RecordingSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which RecordingSessions to update
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * Limit how many RecordingSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecordingSession updateManyAndReturn
+   */
+  export type RecordingSessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * The data used to update RecordingSessions.
+     */
+    data: XOR<RecordingSessionUpdateManyMutationInput, RecordingSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which RecordingSessions to update
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * Limit how many RecordingSessions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RecordingSession upsert
+   */
+  export type RecordingSessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RecordingSession to update in case it exists.
+     */
+    where: RecordingSessionWhereUniqueInput
+    /**
+     * In case the RecordingSession found by the `where` argument doesn't exist, create a new RecordingSession with this data.
+     */
+    create: XOR<RecordingSessionCreateInput, RecordingSessionUncheckedCreateInput>
+    /**
+     * In case the RecordingSession was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RecordingSessionUpdateInput, RecordingSessionUncheckedUpdateInput>
+  }
+
+  /**
+   * RecordingSession delete
+   */
+  export type RecordingSessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+    /**
+     * Filter which RecordingSession to delete.
+     */
+    where: RecordingSessionWhereUniqueInput
+  }
+
+  /**
+   * RecordingSession deleteMany
+   */
+  export type RecordingSessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecordingSessions to delete
+     */
+    where?: RecordingSessionWhereInput
+    /**
+     * Limit how many RecordingSessions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecordingSession.participants
+   */
+  export type RecordingSession$participantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    where?: ParticipantWhereInput
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    cursor?: ParticipantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * RecordingSession.tracks
+   */
+  export type RecordingSession$tracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    where?: MediaTrackWhereInput
+    orderBy?: MediaTrackOrderByWithRelationInput | MediaTrackOrderByWithRelationInput[]
+    cursor?: MediaTrackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MediaTrackScalarFieldEnum | MediaTrackScalarFieldEnum[]
+  }
+
+  /**
+   * RecordingSession without action
+   */
+  export type RecordingSessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecordingSession
+     */
+    select?: RecordingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecordingSession
+     */
+    omit?: RecordingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecordingSessionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Participant
+   */
+
+  export type AggregateParticipant = {
+    _count: ParticipantCountAggregateOutputType | null
+    _min: ParticipantMinAggregateOutputType | null
+    _max: ParticipantMaxAggregateOutputType | null
+  }
+
+  export type ParticipantMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    isGuest: boolean | null
+    userId: string | null
+    sessionId: string | null
+  }
+
+  export type ParticipantMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    isGuest: boolean | null
+    userId: string | null
+    sessionId: string | null
+  }
+
+  export type ParticipantCountAggregateOutputType = {
+    id: number
+    name: number
+    isGuest: number
+    userId: number
+    sessionId: number
+    _all: number
+  }
+
+
+  export type ParticipantMinAggregateInputType = {
+    id?: true
+    name?: true
+    isGuest?: true
+    userId?: true
+    sessionId?: true
+  }
+
+  export type ParticipantMaxAggregateInputType = {
+    id?: true
+    name?: true
+    isGuest?: true
+    userId?: true
+    sessionId?: true
+  }
+
+  export type ParticipantCountAggregateInputType = {
+    id?: true
+    name?: true
+    isGuest?: true
+    userId?: true
+    sessionId?: true
+    _all?: true
+  }
+
+  export type ParticipantAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Participant to aggregate.
+     */
+    where?: ParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Participants to fetch.
+     */
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Participants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Participants.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Participants
+    **/
+    _count?: true | ParticipantCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ParticipantMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ParticipantMaxAggregateInputType
+  }
+
+  export type GetParticipantAggregateType<T extends ParticipantAggregateArgs> = {
+        [P in keyof T & keyof AggregateParticipant]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateParticipant[P]>
+      : GetScalarType<T[P], AggregateParticipant[P]>
+  }
+
+
+
+
+  export type ParticipantGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParticipantWhereInput
+    orderBy?: ParticipantOrderByWithAggregationInput | ParticipantOrderByWithAggregationInput[]
+    by: ParticipantScalarFieldEnum[] | ParticipantScalarFieldEnum
+    having?: ParticipantScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ParticipantCountAggregateInputType | true
+    _min?: ParticipantMinAggregateInputType
+    _max?: ParticipantMaxAggregateInputType
+  }
+
+  export type ParticipantGroupByOutputType = {
+    id: string
+    name: string
+    isGuest: boolean
+    userId: string | null
+    sessionId: string
+    _count: ParticipantCountAggregateOutputType | null
+    _min: ParticipantMinAggregateOutputType | null
+    _max: ParticipantMaxAggregateOutputType | null
+  }
+
+  type GetParticipantGroupByPayload<T extends ParticipantGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ParticipantGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ParticipantGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ParticipantGroupByOutputType[P]>
+            : GetScalarType<T[P], ParticipantGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ParticipantSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    isGuest?: boolean
+    userId?: boolean
+    sessionId?: boolean
+    user?: boolean | Participant$userArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+    tracks?: boolean | Participant$tracksArgs<ExtArgs>
+    _count?: boolean | ParticipantCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["participant"]>
+
+  export type ParticipantSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    isGuest?: boolean
+    userId?: boolean
+    sessionId?: boolean
+    user?: boolean | Participant$userArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["participant"]>
+
+  export type ParticipantSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    isGuest?: boolean
+    userId?: boolean
+    sessionId?: boolean
+    user?: boolean | Participant$userArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["participant"]>
+
+  export type ParticipantSelectScalar = {
+    id?: boolean
+    name?: boolean
+    isGuest?: boolean
+    userId?: boolean
+    sessionId?: boolean
+  }
+
+  export type ParticipantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "isGuest" | "userId" | "sessionId", ExtArgs["result"]["participant"]>
+  export type ParticipantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Participant$userArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+    tracks?: boolean | Participant$tracksArgs<ExtArgs>
+    _count?: boolean | ParticipantCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ParticipantIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Participant$userArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }
+  export type ParticipantIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Participant$userArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }
+
+  export type $ParticipantPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Participant"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      session: Prisma.$RecordingSessionPayload<ExtArgs>
+      tracks: Prisma.$MediaTrackPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      isGuest: boolean
+      userId: string | null
+      sessionId: string
+    }, ExtArgs["result"]["participant"]>
+    composites: {}
+  }
+
+  type ParticipantGetPayload<S extends boolean | null | undefined | ParticipantDefaultArgs> = $Result.GetResult<Prisma.$ParticipantPayload, S>
+
+  type ParticipantCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ParticipantFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ParticipantCountAggregateInputType | true
+    }
+
+  export interface ParticipantDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Participant'], meta: { name: 'Participant' } }
+    /**
+     * Find zero or one Participant that matches the filter.
+     * @param {ParticipantFindUniqueArgs} args - Arguments to find a Participant
+     * @example
+     * // Get one Participant
+     * const participant = await prisma.participant.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ParticipantFindUniqueArgs>(args: SelectSubset<T, ParticipantFindUniqueArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Participant that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ParticipantFindUniqueOrThrowArgs} args - Arguments to find a Participant
+     * @example
+     * // Get one Participant
+     * const participant = await prisma.participant.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ParticipantFindUniqueOrThrowArgs>(args: SelectSubset<T, ParticipantFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Participant that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantFindFirstArgs} args - Arguments to find a Participant
+     * @example
+     * // Get one Participant
+     * const participant = await prisma.participant.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ParticipantFindFirstArgs>(args?: SelectSubset<T, ParticipantFindFirstArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Participant that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantFindFirstOrThrowArgs} args - Arguments to find a Participant
+     * @example
+     * // Get one Participant
+     * const participant = await prisma.participant.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ParticipantFindFirstOrThrowArgs>(args?: SelectSubset<T, ParticipantFindFirstOrThrowArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Participants that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Participants
+     * const participants = await prisma.participant.findMany()
+     * 
+     * // Get first 10 Participants
+     * const participants = await prisma.participant.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const participantWithIdOnly = await prisma.participant.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ParticipantFindManyArgs>(args?: SelectSubset<T, ParticipantFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Participant.
+     * @param {ParticipantCreateArgs} args - Arguments to create a Participant.
+     * @example
+     * // Create one Participant
+     * const Participant = await prisma.participant.create({
+     *   data: {
+     *     // ... data to create a Participant
+     *   }
+     * })
+     * 
+     */
+    create<T extends ParticipantCreateArgs>(args: SelectSubset<T, ParticipantCreateArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Participants.
+     * @param {ParticipantCreateManyArgs} args - Arguments to create many Participants.
+     * @example
+     * // Create many Participants
+     * const participant = await prisma.participant.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ParticipantCreateManyArgs>(args?: SelectSubset<T, ParticipantCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Participants and returns the data saved in the database.
+     * @param {ParticipantCreateManyAndReturnArgs} args - Arguments to create many Participants.
+     * @example
+     * // Create many Participants
+     * const participant = await prisma.participant.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Participants and only return the `id`
+     * const participantWithIdOnly = await prisma.participant.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ParticipantCreateManyAndReturnArgs>(args?: SelectSubset<T, ParticipantCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Participant.
+     * @param {ParticipantDeleteArgs} args - Arguments to delete one Participant.
+     * @example
+     * // Delete one Participant
+     * const Participant = await prisma.participant.delete({
+     *   where: {
+     *     // ... filter to delete one Participant
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ParticipantDeleteArgs>(args: SelectSubset<T, ParticipantDeleteArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Participant.
+     * @param {ParticipantUpdateArgs} args - Arguments to update one Participant.
+     * @example
+     * // Update one Participant
+     * const participant = await prisma.participant.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ParticipantUpdateArgs>(args: SelectSubset<T, ParticipantUpdateArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Participants.
+     * @param {ParticipantDeleteManyArgs} args - Arguments to filter Participants to delete.
+     * @example
+     * // Delete a few Participants
+     * const { count } = await prisma.participant.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ParticipantDeleteManyArgs>(args?: SelectSubset<T, ParticipantDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Participants.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Participants
+     * const participant = await prisma.participant.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ParticipantUpdateManyArgs>(args: SelectSubset<T, ParticipantUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Participants and returns the data updated in the database.
+     * @param {ParticipantUpdateManyAndReturnArgs} args - Arguments to update many Participants.
+     * @example
+     * // Update many Participants
+     * const participant = await prisma.participant.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Participants and only return the `id`
+     * const participantWithIdOnly = await prisma.participant.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ParticipantUpdateManyAndReturnArgs>(args: SelectSubset<T, ParticipantUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Participant.
+     * @param {ParticipantUpsertArgs} args - Arguments to update or create a Participant.
+     * @example
+     * // Update or create a Participant
+     * const participant = await prisma.participant.upsert({
+     *   create: {
+     *     // ... data to create a Participant
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Participant we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ParticipantUpsertArgs>(args: SelectSubset<T, ParticipantUpsertArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Participants.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantCountArgs} args - Arguments to filter Participants to count.
+     * @example
+     * // Count the number of Participants
+     * const count = await prisma.participant.count({
+     *   where: {
+     *     // ... the filter for the Participants we want to count
+     *   }
+     * })
+    **/
+    count<T extends ParticipantCountArgs>(
+      args?: Subset<T, ParticipantCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ParticipantCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Participant.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ParticipantAggregateArgs>(args: Subset<T, ParticipantAggregateArgs>): Prisma.PrismaPromise<GetParticipantAggregateType<T>>
+
+    /**
+     * Group by Participant.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParticipantGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ParticipantGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ParticipantGroupByArgs['orderBy'] }
+        : { orderBy?: ParticipantGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ParticipantGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParticipantGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Participant model
+   */
+  readonly fields: ParticipantFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Participant.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ParticipantClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends Participant$userArgs<ExtArgs> = {}>(args?: Subset<T, Participant$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    session<T extends RecordingSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RecordingSessionDefaultArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tracks<T extends Participant$tracksArgs<ExtArgs> = {}>(args?: Subset<T, Participant$tracksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Participant model
+   */
+  interface ParticipantFieldRefs {
+    readonly id: FieldRef<"Participant", 'String'>
+    readonly name: FieldRef<"Participant", 'String'>
+    readonly isGuest: FieldRef<"Participant", 'Boolean'>
+    readonly userId: FieldRef<"Participant", 'String'>
+    readonly sessionId: FieldRef<"Participant", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Participant findUnique
+   */
+  export type ParticipantFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which Participant to fetch.
+     */
+    where: ParticipantWhereUniqueInput
+  }
+
+  /**
+   * Participant findUniqueOrThrow
+   */
+  export type ParticipantFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which Participant to fetch.
+     */
+    where: ParticipantWhereUniqueInput
+  }
+
+  /**
+   * Participant findFirst
+   */
+  export type ParticipantFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which Participant to fetch.
+     */
+    where?: ParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Participants to fetch.
+     */
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Participants.
+     */
+    cursor?: ParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Participants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Participants.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Participants.
+     */
+    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * Participant findFirstOrThrow
+   */
+  export type ParticipantFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which Participant to fetch.
+     */
+    where?: ParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Participants to fetch.
+     */
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Participants.
+     */
+    cursor?: ParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Participants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Participants.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Participants.
+     */
+    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * Participant findMany
+   */
+  export type ParticipantFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * Filter, which Participants to fetch.
+     */
+    where?: ParticipantWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Participants to fetch.
+     */
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Participants.
+     */
+    cursor?: ParticipantWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Participants from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Participants.
+     */
+    skip?: number
+    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * Participant create
+   */
+  export type ParticipantCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Participant.
+     */
+    data: XOR<ParticipantCreateInput, ParticipantUncheckedCreateInput>
+  }
+
+  /**
+   * Participant createMany
+   */
+  export type ParticipantCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Participants.
+     */
+    data: ParticipantCreateManyInput | ParticipantCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Participant createManyAndReturn
+   */
+  export type ParticipantCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * The data used to create many Participants.
+     */
+    data: ParticipantCreateManyInput | ParticipantCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Participant update
+   */
+  export type ParticipantUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Participant.
+     */
+    data: XOR<ParticipantUpdateInput, ParticipantUncheckedUpdateInput>
+    /**
+     * Choose, which Participant to update.
+     */
+    where: ParticipantWhereUniqueInput
+  }
+
+  /**
+   * Participant updateMany
+   */
+  export type ParticipantUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Participants.
+     */
+    data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyInput>
+    /**
+     * Filter which Participants to update
+     */
+    where?: ParticipantWhereInput
+    /**
+     * Limit how many Participants to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Participant updateManyAndReturn
+   */
+  export type ParticipantUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * The data used to update Participants.
+     */
+    data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyInput>
+    /**
+     * Filter which Participants to update
+     */
+    where?: ParticipantWhereInput
+    /**
+     * Limit how many Participants to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Participant upsert
+   */
+  export type ParticipantUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Participant to update in case it exists.
+     */
+    where: ParticipantWhereUniqueInput
+    /**
+     * In case the Participant found by the `where` argument doesn't exist, create a new Participant with this data.
+     */
+    create: XOR<ParticipantCreateInput, ParticipantUncheckedCreateInput>
+    /**
+     * In case the Participant was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ParticipantUpdateInput, ParticipantUncheckedUpdateInput>
+  }
+
+  /**
+   * Participant delete
+   */
+  export type ParticipantDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    /**
+     * Filter which Participant to delete.
+     */
+    where: ParticipantWhereUniqueInput
+  }
+
+  /**
+   * Participant deleteMany
+   */
+  export type ParticipantDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Participants to delete
+     */
+    where?: ParticipantWhereInput
+    /**
+     * Limit how many Participants to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Participant.user
+   */
+  export type Participant$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Participant.tracks
+   */
+  export type Participant$tracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    where?: MediaTrackWhereInput
+    orderBy?: MediaTrackOrderByWithRelationInput | MediaTrackOrderByWithRelationInput[]
+    cursor?: MediaTrackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MediaTrackScalarFieldEnum | MediaTrackScalarFieldEnum[]
+  }
+
+  /**
+   * Participant without action
+   */
+  export type ParticipantDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MediaTrack
+   */
+
+  export type AggregateMediaTrack = {
+    _count: MediaTrackCountAggregateOutputType | null
+    _avg: MediaTrackAvgAggregateOutputType | null
+    _sum: MediaTrackSumAggregateOutputType | null
+    _min: MediaTrackMinAggregateOutputType | null
+    _max: MediaTrackMaxAggregateOutputType | null
+  }
+
+  export type MediaTrackAvgAggregateOutputType = {
+    duration: number | null
+  }
+
+  export type MediaTrackSumAggregateOutputType = {
+    duration: number | null
+  }
+
+  export type MediaTrackMinAggregateOutputType = {
+    id: string | null
+    type: string | null
+    url: string | null
+    duration: number | null
+    recordedAt: Date | null
+    participantId: string | null
+    sessionId: string | null
+  }
+
+  export type MediaTrackMaxAggregateOutputType = {
+    id: string | null
+    type: string | null
+    url: string | null
+    duration: number | null
+    recordedAt: Date | null
+    participantId: string | null
+    sessionId: string | null
+  }
+
+  export type MediaTrackCountAggregateOutputType = {
+    id: number
+    type: number
+    url: number
+    duration: number
+    recordedAt: number
+    participantId: number
+    sessionId: number
+    _all: number
+  }
+
+
+  export type MediaTrackAvgAggregateInputType = {
+    duration?: true
+  }
+
+  export type MediaTrackSumAggregateInputType = {
+    duration?: true
+  }
+
+  export type MediaTrackMinAggregateInputType = {
+    id?: true
+    type?: true
+    url?: true
+    duration?: true
+    recordedAt?: true
+    participantId?: true
+    sessionId?: true
+  }
+
+  export type MediaTrackMaxAggregateInputType = {
+    id?: true
+    type?: true
+    url?: true
+    duration?: true
+    recordedAt?: true
+    participantId?: true
+    sessionId?: true
+  }
+
+  export type MediaTrackCountAggregateInputType = {
+    id?: true
+    type?: true
+    url?: true
+    duration?: true
+    recordedAt?: true
+    participantId?: true
+    sessionId?: true
+    _all?: true
+  }
+
+  export type MediaTrackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MediaTrack to aggregate.
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MediaTracks to fetch.
+     */
+    orderBy?: MediaTrackOrderByWithRelationInput | MediaTrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MediaTrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MediaTracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MediaTracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MediaTracks
+    **/
+    _count?: true | MediaTrackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MediaTrackAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MediaTrackSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MediaTrackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MediaTrackMaxAggregateInputType
+  }
+
+  export type GetMediaTrackAggregateType<T extends MediaTrackAggregateArgs> = {
+        [P in keyof T & keyof AggregateMediaTrack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMediaTrack[P]>
+      : GetScalarType<T[P], AggregateMediaTrack[P]>
+  }
+
+
+
+
+  export type MediaTrackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MediaTrackWhereInput
+    orderBy?: MediaTrackOrderByWithAggregationInput | MediaTrackOrderByWithAggregationInput[]
+    by: MediaTrackScalarFieldEnum[] | MediaTrackScalarFieldEnum
+    having?: MediaTrackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MediaTrackCountAggregateInputType | true
+    _avg?: MediaTrackAvgAggregateInputType
+    _sum?: MediaTrackSumAggregateInputType
+    _min?: MediaTrackMinAggregateInputType
+    _max?: MediaTrackMaxAggregateInputType
+  }
+
+  export type MediaTrackGroupByOutputType = {
+    id: string
+    type: string
+    url: string
+    duration: number
+    recordedAt: Date
+    participantId: string
+    sessionId: string
+    _count: MediaTrackCountAggregateOutputType | null
+    _avg: MediaTrackAvgAggregateOutputType | null
+    _sum: MediaTrackSumAggregateOutputType | null
+    _min: MediaTrackMinAggregateOutputType | null
+    _max: MediaTrackMaxAggregateOutputType | null
+  }
+
+  type GetMediaTrackGroupByPayload<T extends MediaTrackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MediaTrackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MediaTrackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MediaTrackGroupByOutputType[P]>
+            : GetScalarType<T[P], MediaTrackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MediaTrackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    duration?: boolean
+    recordedAt?: boolean
+    participantId?: boolean
+    sessionId?: boolean
+    participant?: boolean | ParticipantDefaultArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mediaTrack"]>
+
+  export type MediaTrackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    duration?: boolean
+    recordedAt?: boolean
+    participantId?: boolean
+    sessionId?: boolean
+    participant?: boolean | ParticipantDefaultArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mediaTrack"]>
+
+  export type MediaTrackSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    duration?: boolean
+    recordedAt?: boolean
+    participantId?: boolean
+    sessionId?: boolean
+    participant?: boolean | ParticipantDefaultArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["mediaTrack"]>
+
+  export type MediaTrackSelectScalar = {
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    duration?: boolean
+    recordedAt?: boolean
+    participantId?: boolean
+    sessionId?: boolean
+  }
+
+  export type MediaTrackOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "url" | "duration" | "recordedAt" | "participantId" | "sessionId", ExtArgs["result"]["mediaTrack"]>
+  export type MediaTrackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    participant?: boolean | ParticipantDefaultArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }
+  export type MediaTrackIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    participant?: boolean | ParticipantDefaultArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }
+  export type MediaTrackIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    participant?: boolean | ParticipantDefaultArgs<ExtArgs>
+    session?: boolean | RecordingSessionDefaultArgs<ExtArgs>
+  }
+
+  export type $MediaTrackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MediaTrack"
+    objects: {
+      participant: Prisma.$ParticipantPayload<ExtArgs>
+      session: Prisma.$RecordingSessionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: string
+      url: string
+      duration: number
+      recordedAt: Date
+      participantId: string
+      sessionId: string
+    }, ExtArgs["result"]["mediaTrack"]>
+    composites: {}
+  }
+
+  type MediaTrackGetPayload<S extends boolean | null | undefined | MediaTrackDefaultArgs> = $Result.GetResult<Prisma.$MediaTrackPayload, S>
+
+  type MediaTrackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MediaTrackFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MediaTrackCountAggregateInputType | true
+    }
+
+  export interface MediaTrackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MediaTrack'], meta: { name: 'MediaTrack' } }
+    /**
+     * Find zero or one MediaTrack that matches the filter.
+     * @param {MediaTrackFindUniqueArgs} args - Arguments to find a MediaTrack
+     * @example
+     * // Get one MediaTrack
+     * const mediaTrack = await prisma.mediaTrack.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MediaTrackFindUniqueArgs>(args: SelectSubset<T, MediaTrackFindUniqueArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MediaTrack that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MediaTrackFindUniqueOrThrowArgs} args - Arguments to find a MediaTrack
+     * @example
+     * // Get one MediaTrack
+     * const mediaTrack = await prisma.mediaTrack.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MediaTrackFindUniqueOrThrowArgs>(args: SelectSubset<T, MediaTrackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MediaTrack that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackFindFirstArgs} args - Arguments to find a MediaTrack
+     * @example
+     * // Get one MediaTrack
+     * const mediaTrack = await prisma.mediaTrack.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MediaTrackFindFirstArgs>(args?: SelectSubset<T, MediaTrackFindFirstArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MediaTrack that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackFindFirstOrThrowArgs} args - Arguments to find a MediaTrack
+     * @example
+     * // Get one MediaTrack
+     * const mediaTrack = await prisma.mediaTrack.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MediaTrackFindFirstOrThrowArgs>(args?: SelectSubset<T, MediaTrackFindFirstOrThrowArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MediaTracks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MediaTracks
+     * const mediaTracks = await prisma.mediaTrack.findMany()
+     * 
+     * // Get first 10 MediaTracks
+     * const mediaTracks = await prisma.mediaTrack.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mediaTrackWithIdOnly = await prisma.mediaTrack.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MediaTrackFindManyArgs>(args?: SelectSubset<T, MediaTrackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MediaTrack.
+     * @param {MediaTrackCreateArgs} args - Arguments to create a MediaTrack.
+     * @example
+     * // Create one MediaTrack
+     * const MediaTrack = await prisma.mediaTrack.create({
+     *   data: {
+     *     // ... data to create a MediaTrack
+     *   }
+     * })
+     * 
+     */
+    create<T extends MediaTrackCreateArgs>(args: SelectSubset<T, MediaTrackCreateArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MediaTracks.
+     * @param {MediaTrackCreateManyArgs} args - Arguments to create many MediaTracks.
+     * @example
+     * // Create many MediaTracks
+     * const mediaTrack = await prisma.mediaTrack.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MediaTrackCreateManyArgs>(args?: SelectSubset<T, MediaTrackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MediaTracks and returns the data saved in the database.
+     * @param {MediaTrackCreateManyAndReturnArgs} args - Arguments to create many MediaTracks.
+     * @example
+     * // Create many MediaTracks
+     * const mediaTrack = await prisma.mediaTrack.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MediaTracks and only return the `id`
+     * const mediaTrackWithIdOnly = await prisma.mediaTrack.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MediaTrackCreateManyAndReturnArgs>(args?: SelectSubset<T, MediaTrackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MediaTrack.
+     * @param {MediaTrackDeleteArgs} args - Arguments to delete one MediaTrack.
+     * @example
+     * // Delete one MediaTrack
+     * const MediaTrack = await prisma.mediaTrack.delete({
+     *   where: {
+     *     // ... filter to delete one MediaTrack
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MediaTrackDeleteArgs>(args: SelectSubset<T, MediaTrackDeleteArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MediaTrack.
+     * @param {MediaTrackUpdateArgs} args - Arguments to update one MediaTrack.
+     * @example
+     * // Update one MediaTrack
+     * const mediaTrack = await prisma.mediaTrack.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MediaTrackUpdateArgs>(args: SelectSubset<T, MediaTrackUpdateArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MediaTracks.
+     * @param {MediaTrackDeleteManyArgs} args - Arguments to filter MediaTracks to delete.
+     * @example
+     * // Delete a few MediaTracks
+     * const { count } = await prisma.mediaTrack.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MediaTrackDeleteManyArgs>(args?: SelectSubset<T, MediaTrackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MediaTracks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MediaTracks
+     * const mediaTrack = await prisma.mediaTrack.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MediaTrackUpdateManyArgs>(args: SelectSubset<T, MediaTrackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MediaTracks and returns the data updated in the database.
+     * @param {MediaTrackUpdateManyAndReturnArgs} args - Arguments to update many MediaTracks.
+     * @example
+     * // Update many MediaTracks
+     * const mediaTrack = await prisma.mediaTrack.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MediaTracks and only return the `id`
+     * const mediaTrackWithIdOnly = await prisma.mediaTrack.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MediaTrackUpdateManyAndReturnArgs>(args: SelectSubset<T, MediaTrackUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MediaTrack.
+     * @param {MediaTrackUpsertArgs} args - Arguments to update or create a MediaTrack.
+     * @example
+     * // Update or create a MediaTrack
+     * const mediaTrack = await prisma.mediaTrack.upsert({
+     *   create: {
+     *     // ... data to create a MediaTrack
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MediaTrack we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MediaTrackUpsertArgs>(args: SelectSubset<T, MediaTrackUpsertArgs<ExtArgs>>): Prisma__MediaTrackClient<$Result.GetResult<Prisma.$MediaTrackPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MediaTracks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackCountArgs} args - Arguments to filter MediaTracks to count.
+     * @example
+     * // Count the number of MediaTracks
+     * const count = await prisma.mediaTrack.count({
+     *   where: {
+     *     // ... the filter for the MediaTracks we want to count
+     *   }
+     * })
+    **/
+    count<T extends MediaTrackCountArgs>(
+      args?: Subset<T, MediaTrackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MediaTrackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MediaTrack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MediaTrackAggregateArgs>(args: Subset<T, MediaTrackAggregateArgs>): Prisma.PrismaPromise<GetMediaTrackAggregateType<T>>
+
+    /**
+     * Group by MediaTrack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaTrackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MediaTrackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MediaTrackGroupByArgs['orderBy'] }
+        : { orderBy?: MediaTrackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MediaTrackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMediaTrackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MediaTrack model
+   */
+  readonly fields: MediaTrackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MediaTrack.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MediaTrackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    participant<T extends ParticipantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ParticipantDefaultArgs<ExtArgs>>): Prisma__ParticipantClient<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    session<T extends RecordingSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RecordingSessionDefaultArgs<ExtArgs>>): Prisma__RecordingSessionClient<$Result.GetResult<Prisma.$RecordingSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MediaTrack model
+   */
+  interface MediaTrackFieldRefs {
+    readonly id: FieldRef<"MediaTrack", 'String'>
+    readonly type: FieldRef<"MediaTrack", 'String'>
+    readonly url: FieldRef<"MediaTrack", 'String'>
+    readonly duration: FieldRef<"MediaTrack", 'Float'>
+    readonly recordedAt: FieldRef<"MediaTrack", 'DateTime'>
+    readonly participantId: FieldRef<"MediaTrack", 'String'>
+    readonly sessionId: FieldRef<"MediaTrack", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MediaTrack findUnique
+   */
+  export type MediaTrackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * Filter, which MediaTrack to fetch.
+     */
+    where: MediaTrackWhereUniqueInput
+  }
+
+  /**
+   * MediaTrack findUniqueOrThrow
+   */
+  export type MediaTrackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * Filter, which MediaTrack to fetch.
+     */
+    where: MediaTrackWhereUniqueInput
+  }
+
+  /**
+   * MediaTrack findFirst
+   */
+  export type MediaTrackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * Filter, which MediaTrack to fetch.
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MediaTracks to fetch.
+     */
+    orderBy?: MediaTrackOrderByWithRelationInput | MediaTrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MediaTracks.
+     */
+    cursor?: MediaTrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MediaTracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MediaTracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MediaTracks.
+     */
+    distinct?: MediaTrackScalarFieldEnum | MediaTrackScalarFieldEnum[]
+  }
+
+  /**
+   * MediaTrack findFirstOrThrow
+   */
+  export type MediaTrackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * Filter, which MediaTrack to fetch.
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MediaTracks to fetch.
+     */
+    orderBy?: MediaTrackOrderByWithRelationInput | MediaTrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MediaTracks.
+     */
+    cursor?: MediaTrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MediaTracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MediaTracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MediaTracks.
+     */
+    distinct?: MediaTrackScalarFieldEnum | MediaTrackScalarFieldEnum[]
+  }
+
+  /**
+   * MediaTrack findMany
+   */
+  export type MediaTrackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * Filter, which MediaTracks to fetch.
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MediaTracks to fetch.
+     */
+    orderBy?: MediaTrackOrderByWithRelationInput | MediaTrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MediaTracks.
+     */
+    cursor?: MediaTrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MediaTracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MediaTracks.
+     */
+    skip?: number
+    distinct?: MediaTrackScalarFieldEnum | MediaTrackScalarFieldEnum[]
+  }
+
+  /**
+   * MediaTrack create
+   */
+  export type MediaTrackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MediaTrack.
+     */
+    data: XOR<MediaTrackCreateInput, MediaTrackUncheckedCreateInput>
+  }
+
+  /**
+   * MediaTrack createMany
+   */
+  export type MediaTrackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MediaTracks.
+     */
+    data: MediaTrackCreateManyInput | MediaTrackCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MediaTrack createManyAndReturn
+   */
+  export type MediaTrackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * The data used to create many MediaTracks.
+     */
+    data: MediaTrackCreateManyInput | MediaTrackCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MediaTrack update
+   */
+  export type MediaTrackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MediaTrack.
+     */
+    data: XOR<MediaTrackUpdateInput, MediaTrackUncheckedUpdateInput>
+    /**
+     * Choose, which MediaTrack to update.
+     */
+    where: MediaTrackWhereUniqueInput
+  }
+
+  /**
+   * MediaTrack updateMany
+   */
+  export type MediaTrackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MediaTracks.
+     */
+    data: XOR<MediaTrackUpdateManyMutationInput, MediaTrackUncheckedUpdateManyInput>
+    /**
+     * Filter which MediaTracks to update
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * Limit how many MediaTracks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MediaTrack updateManyAndReturn
+   */
+  export type MediaTrackUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * The data used to update MediaTracks.
+     */
+    data: XOR<MediaTrackUpdateManyMutationInput, MediaTrackUncheckedUpdateManyInput>
+    /**
+     * Filter which MediaTracks to update
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * Limit how many MediaTracks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MediaTrack upsert
+   */
+  export type MediaTrackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MediaTrack to update in case it exists.
+     */
+    where: MediaTrackWhereUniqueInput
+    /**
+     * In case the MediaTrack found by the `where` argument doesn't exist, create a new MediaTrack with this data.
+     */
+    create: XOR<MediaTrackCreateInput, MediaTrackUncheckedCreateInput>
+    /**
+     * In case the MediaTrack was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MediaTrackUpdateInput, MediaTrackUncheckedUpdateInput>
+  }
+
+  /**
+   * MediaTrack delete
+   */
+  export type MediaTrackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+    /**
+     * Filter which MediaTrack to delete.
+     */
+    where: MediaTrackWhereUniqueInput
+  }
+
+  /**
+   * MediaTrack deleteMany
+   */
+  export type MediaTrackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MediaTracks to delete
+     */
+    where?: MediaTrackWhereInput
+    /**
+     * Limit how many MediaTracks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MediaTrack without action
+   */
+  export type MediaTrackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaTrack
+     */
+    select?: MediaTrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MediaTrack
+     */
+    omit?: MediaTrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaTrackInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5644,6 +9445,43 @@ export namespace Prisma {
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+  export const RecordingSessionScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    createdAt: 'createdAt',
+    scheduledAt: 'scheduledAt',
+    status: 'status',
+    hostId: 'hostId'
+  };
+
+  export type RecordingSessionScalarFieldEnum = (typeof RecordingSessionScalarFieldEnum)[keyof typeof RecordingSessionScalarFieldEnum]
+
+
+  export const ParticipantScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    isGuest: 'isGuest',
+    userId: 'userId',
+    sessionId: 'sessionId'
+  };
+
+  export type ParticipantScalarFieldEnum = (typeof ParticipantScalarFieldEnum)[keyof typeof ParticipantScalarFieldEnum]
+
+
+  export const MediaTrackScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    url: 'url',
+    duration: 'duration',
+    recordedAt: 'recordedAt',
+    participantId: 'participantId',
+    sessionId: 'sessionId'
+  };
+
+  export type MediaTrackScalarFieldEnum = (typeof MediaTrackScalarFieldEnum)[keyof typeof MediaTrackScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5709,6 +9547,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -5738,6 +9590,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
+    recordings?: RecordingSessionListRelationFilter
+    participants?: ParticipantListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5750,6 +9604,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
+    recordings?: RecordingSessionOrderByRelationAggregateInput
+    participants?: ParticipantOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5765,6 +9621,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
+    recordings?: RecordingSessionListRelationFilter
+    participants?: ParticipantListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -6015,8 +9873,210 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Verification"> | Date | string
   }
 
+  export type RecordingSessionWhereInput = {
+    AND?: RecordingSessionWhereInput | RecordingSessionWhereInput[]
+    OR?: RecordingSessionWhereInput[]
+    NOT?: RecordingSessionWhereInput | RecordingSessionWhereInput[]
+    id?: StringFilter<"RecordingSession"> | string
+    title?: StringFilter<"RecordingSession"> | string
+    description?: StringNullableFilter<"RecordingSession"> | string | null
+    createdAt?: DateTimeFilter<"RecordingSession"> | Date | string
+    scheduledAt?: DateTimeNullableFilter<"RecordingSession"> | Date | string | null
+    status?: StringFilter<"RecordingSession"> | string
+    hostId?: StringFilter<"RecordingSession"> | string
+    host?: XOR<UserScalarRelationFilter, UserWhereInput>
+    participants?: ParticipantListRelationFilter
+    tracks?: MediaTrackListRelationFilter
+  }
+
+  export type RecordingSessionOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    scheduledAt?: SortOrderInput | SortOrder
+    status?: SortOrder
+    hostId?: SortOrder
+    host?: UserOrderByWithRelationInput
+    participants?: ParticipantOrderByRelationAggregateInput
+    tracks?: MediaTrackOrderByRelationAggregateInput
+  }
+
+  export type RecordingSessionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RecordingSessionWhereInput | RecordingSessionWhereInput[]
+    OR?: RecordingSessionWhereInput[]
+    NOT?: RecordingSessionWhereInput | RecordingSessionWhereInput[]
+    title?: StringFilter<"RecordingSession"> | string
+    description?: StringNullableFilter<"RecordingSession"> | string | null
+    createdAt?: DateTimeFilter<"RecordingSession"> | Date | string
+    scheduledAt?: DateTimeNullableFilter<"RecordingSession"> | Date | string | null
+    status?: StringFilter<"RecordingSession"> | string
+    hostId?: StringFilter<"RecordingSession"> | string
+    host?: XOR<UserScalarRelationFilter, UserWhereInput>
+    participants?: ParticipantListRelationFilter
+    tracks?: MediaTrackListRelationFilter
+  }, "id">
+
+  export type RecordingSessionOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    scheduledAt?: SortOrderInput | SortOrder
+    status?: SortOrder
+    hostId?: SortOrder
+    _count?: RecordingSessionCountOrderByAggregateInput
+    _max?: RecordingSessionMaxOrderByAggregateInput
+    _min?: RecordingSessionMinOrderByAggregateInput
+  }
+
+  export type RecordingSessionScalarWhereWithAggregatesInput = {
+    AND?: RecordingSessionScalarWhereWithAggregatesInput | RecordingSessionScalarWhereWithAggregatesInput[]
+    OR?: RecordingSessionScalarWhereWithAggregatesInput[]
+    NOT?: RecordingSessionScalarWhereWithAggregatesInput | RecordingSessionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RecordingSession"> | string
+    title?: StringWithAggregatesFilter<"RecordingSession"> | string
+    description?: StringNullableWithAggregatesFilter<"RecordingSession"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"RecordingSession"> | Date | string
+    scheduledAt?: DateTimeNullableWithAggregatesFilter<"RecordingSession"> | Date | string | null
+    status?: StringWithAggregatesFilter<"RecordingSession"> | string
+    hostId?: StringWithAggregatesFilter<"RecordingSession"> | string
+  }
+
+  export type ParticipantWhereInput = {
+    AND?: ParticipantWhereInput | ParticipantWhereInput[]
+    OR?: ParticipantWhereInput[]
+    NOT?: ParticipantWhereInput | ParticipantWhereInput[]
+    id?: StringFilter<"Participant"> | string
+    name?: StringFilter<"Participant"> | string
+    isGuest?: BoolFilter<"Participant"> | boolean
+    userId?: StringNullableFilter<"Participant"> | string | null
+    sessionId?: StringFilter<"Participant"> | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    session?: XOR<RecordingSessionScalarRelationFilter, RecordingSessionWhereInput>
+    tracks?: MediaTrackListRelationFilter
+  }
+
+  export type ParticipantOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isGuest?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    sessionId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    session?: RecordingSessionOrderByWithRelationInput
+    tracks?: MediaTrackOrderByRelationAggregateInput
+  }
+
+  export type ParticipantWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ParticipantWhereInput | ParticipantWhereInput[]
+    OR?: ParticipantWhereInput[]
+    NOT?: ParticipantWhereInput | ParticipantWhereInput[]
+    name?: StringFilter<"Participant"> | string
+    isGuest?: BoolFilter<"Participant"> | boolean
+    userId?: StringNullableFilter<"Participant"> | string | null
+    sessionId?: StringFilter<"Participant"> | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    session?: XOR<RecordingSessionScalarRelationFilter, RecordingSessionWhereInput>
+    tracks?: MediaTrackListRelationFilter
+  }, "id">
+
+  export type ParticipantOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isGuest?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    sessionId?: SortOrder
+    _count?: ParticipantCountOrderByAggregateInput
+    _max?: ParticipantMaxOrderByAggregateInput
+    _min?: ParticipantMinOrderByAggregateInput
+  }
+
+  export type ParticipantScalarWhereWithAggregatesInput = {
+    AND?: ParticipantScalarWhereWithAggregatesInput | ParticipantScalarWhereWithAggregatesInput[]
+    OR?: ParticipantScalarWhereWithAggregatesInput[]
+    NOT?: ParticipantScalarWhereWithAggregatesInput | ParticipantScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Participant"> | string
+    name?: StringWithAggregatesFilter<"Participant"> | string
+    isGuest?: BoolWithAggregatesFilter<"Participant"> | boolean
+    userId?: StringNullableWithAggregatesFilter<"Participant"> | string | null
+    sessionId?: StringWithAggregatesFilter<"Participant"> | string
+  }
+
+  export type MediaTrackWhereInput = {
+    AND?: MediaTrackWhereInput | MediaTrackWhereInput[]
+    OR?: MediaTrackWhereInput[]
+    NOT?: MediaTrackWhereInput | MediaTrackWhereInput[]
+    id?: StringFilter<"MediaTrack"> | string
+    type?: StringFilter<"MediaTrack"> | string
+    url?: StringFilter<"MediaTrack"> | string
+    duration?: FloatFilter<"MediaTrack"> | number
+    recordedAt?: DateTimeFilter<"MediaTrack"> | Date | string
+    participantId?: StringFilter<"MediaTrack"> | string
+    sessionId?: StringFilter<"MediaTrack"> | string
+    participant?: XOR<ParticipantScalarRelationFilter, ParticipantWhereInput>
+    session?: XOR<RecordingSessionScalarRelationFilter, RecordingSessionWhereInput>
+  }
+
+  export type MediaTrackOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+    recordedAt?: SortOrder
+    participantId?: SortOrder
+    sessionId?: SortOrder
+    participant?: ParticipantOrderByWithRelationInput
+    session?: RecordingSessionOrderByWithRelationInput
+  }
+
+  export type MediaTrackWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MediaTrackWhereInput | MediaTrackWhereInput[]
+    OR?: MediaTrackWhereInput[]
+    NOT?: MediaTrackWhereInput | MediaTrackWhereInput[]
+    type?: StringFilter<"MediaTrack"> | string
+    url?: StringFilter<"MediaTrack"> | string
+    duration?: FloatFilter<"MediaTrack"> | number
+    recordedAt?: DateTimeFilter<"MediaTrack"> | Date | string
+    participantId?: StringFilter<"MediaTrack"> | string
+    sessionId?: StringFilter<"MediaTrack"> | string
+    participant?: XOR<ParticipantScalarRelationFilter, ParticipantWhereInput>
+    session?: XOR<RecordingSessionScalarRelationFilter, RecordingSessionWhereInput>
+  }, "id">
+
+  export type MediaTrackOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+    recordedAt?: SortOrder
+    participantId?: SortOrder
+    sessionId?: SortOrder
+    _count?: MediaTrackCountOrderByAggregateInput
+    _avg?: MediaTrackAvgOrderByAggregateInput
+    _max?: MediaTrackMaxOrderByAggregateInput
+    _min?: MediaTrackMinOrderByAggregateInput
+    _sum?: MediaTrackSumOrderByAggregateInput
+  }
+
+  export type MediaTrackScalarWhereWithAggregatesInput = {
+    AND?: MediaTrackScalarWhereWithAggregatesInput | MediaTrackScalarWhereWithAggregatesInput[]
+    OR?: MediaTrackScalarWhereWithAggregatesInput[]
+    NOT?: MediaTrackScalarWhereWithAggregatesInput | MediaTrackScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MediaTrack"> | string
+    type?: StringWithAggregatesFilter<"MediaTrack"> | string
+    url?: StringWithAggregatesFilter<"MediaTrack"> | string
+    duration?: FloatWithAggregatesFilter<"MediaTrack"> | number
+    recordedAt?: DateTimeWithAggregatesFilter<"MediaTrack"> | Date | string
+    participantId?: StringWithAggregatesFilter<"MediaTrack"> | string
+    sessionId?: StringWithAggregatesFilter<"MediaTrack"> | string
+  }
+
   export type UserCreateInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -6025,10 +10085,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionCreateNestedManyWithoutHostInput
+    participants?: ParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -6037,6 +10099,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionUncheckedCreateNestedManyWithoutHostInput
+    participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6049,6 +10113,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUpdateManyWithoutHostNestedInput
+    participants?: ParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6061,10 +10127,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUncheckedUpdateManyWithoutHostNestedInput
+    participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -6094,7 +10162,7 @@ export namespace Prisma {
   }
 
   export type SessionCreateInput = {
-    id: string
+    id?: string
     expiresAt: Date | string
     token: string
     createdAt?: Date | string
@@ -6105,7 +10173,7 @@ export namespace Prisma {
   }
 
   export type SessionUncheckedCreateInput = {
-    id: string
+    id?: string
     expiresAt: Date | string
     token: string
     createdAt?: Date | string
@@ -6138,7 +10206,7 @@ export namespace Prisma {
   }
 
   export type SessionCreateManyInput = {
-    id: string
+    id?: string
     expiresAt: Date | string
     token: string
     createdAt?: Date | string
@@ -6170,7 +10238,7 @@ export namespace Prisma {
   }
 
   export type AccountCreateInput = {
-    id: string
+    id?: string
     accountId: string
     providerId: string
     accessToken?: string | null
@@ -6186,7 +10254,7 @@ export namespace Prisma {
   }
 
   export type AccountUncheckedCreateInput = {
-    id: string
+    id?: string
     accountId: string
     providerId: string
     userId: string
@@ -6234,7 +10302,7 @@ export namespace Prisma {
   }
 
   export type AccountCreateManyInput = {
-    id: string
+    id?: string
     accountId: string
     providerId: string
     userId: string
@@ -6281,7 +10349,7 @@ export namespace Prisma {
   }
 
   export type VerificationCreateInput = {
-    id: string
+    id?: string
     identifier: string
     value: string
     expiresAt: Date | string
@@ -6290,7 +10358,7 @@ export namespace Prisma {
   }
 
   export type VerificationUncheckedCreateInput = {
-    id: string
+    id?: string
     identifier: string
     value: string
     expiresAt: Date | string
@@ -6317,7 +10385,7 @@ export namespace Prisma {
   }
 
   export type VerificationCreateManyInput = {
-    id: string
+    id?: string
     identifier: string
     value: string
     expiresAt: Date | string
@@ -6341,6 +10409,209 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecordingSessionCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    host: UserCreateNestedOneWithoutRecordingsInput
+    participants?: ParticipantCreateNestedManyWithoutSessionInput
+    tracks?: MediaTrackCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionUncheckedCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    hostId: string
+    participants?: ParticipantUncheckedCreateNestedManyWithoutSessionInput
+    tracks?: MediaTrackUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    host?: UserUpdateOneRequiredWithoutRecordingsNestedInput
+    participants?: ParticipantUpdateManyWithoutSessionNestedInput
+    tracks?: MediaTrackUpdateManyWithoutSessionNestedInput
+  }
+
+  export type RecordingSessionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    hostId?: StringFieldUpdateOperationsInput | string
+    participants?: ParticipantUncheckedUpdateManyWithoutSessionNestedInput
+    tracks?: MediaTrackUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type RecordingSessionCreateManyInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    hostId: string
+  }
+
+  export type RecordingSessionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RecordingSessionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    hostId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ParticipantCreateInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    user?: UserCreateNestedOneWithoutParticipantsInput
+    session: RecordingSessionCreateNestedOneWithoutParticipantsInput
+    tracks?: MediaTrackCreateNestedManyWithoutParticipantInput
+  }
+
+  export type ParticipantUncheckedCreateInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    userId?: string | null
+    sessionId: string
+    tracks?: MediaTrackUncheckedCreateNestedManyWithoutParticipantInput
+  }
+
+  export type ParticipantUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneWithoutParticipantsNestedInput
+    session?: RecordingSessionUpdateOneRequiredWithoutParticipantsNestedInput
+    tracks?: MediaTrackUpdateManyWithoutParticipantNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionId?: StringFieldUpdateOperationsInput | string
+    tracks?: MediaTrackUncheckedUpdateManyWithoutParticipantNestedInput
+  }
+
+  export type ParticipantCreateManyInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    userId?: string | null
+    sessionId: string
+  }
+
+  export type ParticipantUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ParticipantUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaTrackCreateInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    participant: ParticipantCreateNestedOneWithoutTracksInput
+    session: RecordingSessionCreateNestedOneWithoutTracksInput
+  }
+
+  export type MediaTrackUncheckedCreateInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    participantId: string
+    sessionId: string
+  }
+
+  export type MediaTrackUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participant?: ParticipantUpdateOneRequiredWithoutTracksNestedInput
+    session?: RecordingSessionUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type MediaTrackUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participantId?: StringFieldUpdateOperationsInput | string
+    sessionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaTrackCreateManyInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    participantId: string
+    sessionId: string
+  }
+
+  export type MediaTrackUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MediaTrackUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participantId?: StringFieldUpdateOperationsInput | string
+    sessionId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6401,6 +10672,18 @@ export namespace Prisma {
     none?: AccountWhereInput
   }
 
+  export type RecordingSessionListRelationFilter = {
+    every?: RecordingSessionWhereInput
+    some?: RecordingSessionWhereInput
+    none?: RecordingSessionWhereInput
+  }
+
+  export type ParticipantListRelationFilter = {
+    every?: ParticipantWhereInput
+    some?: ParticipantWhereInput
+    none?: ParticipantWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6411,6 +10694,14 @@ export namespace Prisma {
   }
 
   export type AccountOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecordingSessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ParticipantOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6640,6 +10931,150 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type MediaTrackListRelationFilter = {
+    every?: MediaTrackWhereInput
+    some?: MediaTrackWhereInput
+    none?: MediaTrackWhereInput
+  }
+
+  export type MediaTrackOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecordingSessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    scheduledAt?: SortOrder
+    status?: SortOrder
+    hostId?: SortOrder
+  }
+
+  export type RecordingSessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    scheduledAt?: SortOrder
+    status?: SortOrder
+    hostId?: SortOrder
+  }
+
+  export type RecordingSessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    scheduledAt?: SortOrder
+    status?: SortOrder
+    hostId?: SortOrder
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type RecordingSessionScalarRelationFilter = {
+    is?: RecordingSessionWhereInput
+    isNot?: RecordingSessionWhereInput
+  }
+
+  export type ParticipantCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isGuest?: SortOrder
+    userId?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type ParticipantMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isGuest?: SortOrder
+    userId?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type ParticipantMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    isGuest?: SortOrder
+    userId?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type ParticipantScalarRelationFilter = {
+    is?: ParticipantWhereInput
+    isNot?: ParticipantWhereInput
+  }
+
+  export type MediaTrackCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+    recordedAt?: SortOrder
+    participantId?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type MediaTrackAvgOrderByAggregateInput = {
+    duration?: SortOrder
+  }
+
+  export type MediaTrackMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+    recordedAt?: SortOrder
+    participantId?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type MediaTrackMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    duration?: SortOrder
+    recordedAt?: SortOrder
+    participantId?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type MediaTrackSumOrderByAggregateInput = {
+    duration?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6654,6 +11089,20 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type RecordingSessionCreateNestedManyWithoutHostInput = {
+    create?: XOR<RecordingSessionCreateWithoutHostInput, RecordingSessionUncheckedCreateWithoutHostInput> | RecordingSessionCreateWithoutHostInput[] | RecordingSessionUncheckedCreateWithoutHostInput[]
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutHostInput | RecordingSessionCreateOrConnectWithoutHostInput[]
+    createMany?: RecordingSessionCreateManyHostInputEnvelope
+    connect?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+  }
+
+  export type ParticipantCreateNestedManyWithoutUserInput = {
+    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
+    createMany?: ParticipantCreateManyUserInputEnvelope
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6666,6 +11115,20 @@ export namespace Prisma {
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type RecordingSessionUncheckedCreateNestedManyWithoutHostInput = {
+    create?: XOR<RecordingSessionCreateWithoutHostInput, RecordingSessionUncheckedCreateWithoutHostInput> | RecordingSessionCreateWithoutHostInput[] | RecordingSessionUncheckedCreateWithoutHostInput[]
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutHostInput | RecordingSessionCreateOrConnectWithoutHostInput[]
+    createMany?: RecordingSessionCreateManyHostInputEnvelope
+    connect?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+  }
+
+  export type ParticipantUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
+    createMany?: ParticipantCreateManyUserInputEnvelope
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6712,6 +11175,34 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type RecordingSessionUpdateManyWithoutHostNestedInput = {
+    create?: XOR<RecordingSessionCreateWithoutHostInput, RecordingSessionUncheckedCreateWithoutHostInput> | RecordingSessionCreateWithoutHostInput[] | RecordingSessionUncheckedCreateWithoutHostInput[]
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutHostInput | RecordingSessionCreateOrConnectWithoutHostInput[]
+    upsert?: RecordingSessionUpsertWithWhereUniqueWithoutHostInput | RecordingSessionUpsertWithWhereUniqueWithoutHostInput[]
+    createMany?: RecordingSessionCreateManyHostInputEnvelope
+    set?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    disconnect?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    delete?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    connect?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    update?: RecordingSessionUpdateWithWhereUniqueWithoutHostInput | RecordingSessionUpdateWithWhereUniqueWithoutHostInput[]
+    updateMany?: RecordingSessionUpdateManyWithWhereWithoutHostInput | RecordingSessionUpdateManyWithWhereWithoutHostInput[]
+    deleteMany?: RecordingSessionScalarWhereInput | RecordingSessionScalarWhereInput[]
+  }
+
+  export type ParticipantUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
+    upsert?: ParticipantUpsertWithWhereUniqueWithoutUserInput | ParticipantUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ParticipantCreateManyUserInputEnvelope
+    set?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    disconnect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    delete?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    update?: ParticipantUpdateWithWhereUniqueWithoutUserInput | ParticipantUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ParticipantUpdateManyWithWhereWithoutUserInput | ParticipantUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6738,6 +11229,34 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type RecordingSessionUncheckedUpdateManyWithoutHostNestedInput = {
+    create?: XOR<RecordingSessionCreateWithoutHostInput, RecordingSessionUncheckedCreateWithoutHostInput> | RecordingSessionCreateWithoutHostInput[] | RecordingSessionUncheckedCreateWithoutHostInput[]
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutHostInput | RecordingSessionCreateOrConnectWithoutHostInput[]
+    upsert?: RecordingSessionUpsertWithWhereUniqueWithoutHostInput | RecordingSessionUpsertWithWhereUniqueWithoutHostInput[]
+    createMany?: RecordingSessionCreateManyHostInputEnvelope
+    set?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    disconnect?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    delete?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    connect?: RecordingSessionWhereUniqueInput | RecordingSessionWhereUniqueInput[]
+    update?: RecordingSessionUpdateWithWhereUniqueWithoutHostInput | RecordingSessionUpdateWithWhereUniqueWithoutHostInput[]
+    updateMany?: RecordingSessionUpdateManyWithWhereWithoutHostInput | RecordingSessionUpdateManyWithWhereWithoutHostInput[]
+    deleteMany?: RecordingSessionScalarWhereInput | RecordingSessionScalarWhereInput[]
+  }
+
+  export type ParticipantUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
+    upsert?: ParticipantUpsertWithWhereUniqueWithoutUserInput | ParticipantUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ParticipantCreateManyUserInputEnvelope
+    set?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    disconnect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    delete?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    update?: ParticipantUpdateWithWhereUniqueWithoutUserInput | ParticipantUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ParticipantUpdateManyWithWhereWithoutUserInput | ParticipantUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -6770,6 +11289,212 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type UserCreateNestedOneWithoutRecordingsInput = {
+    create?: XOR<UserCreateWithoutRecordingsInput, UserUncheckedCreateWithoutRecordingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecordingsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ParticipantCreateNestedManyWithoutSessionInput = {
+    create?: XOR<ParticipantCreateWithoutSessionInput, ParticipantUncheckedCreateWithoutSessionInput> | ParticipantCreateWithoutSessionInput[] | ParticipantUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutSessionInput | ParticipantCreateOrConnectWithoutSessionInput[]
+    createMany?: ParticipantCreateManySessionInputEnvelope
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  }
+
+  export type MediaTrackCreateNestedManyWithoutSessionInput = {
+    create?: XOR<MediaTrackCreateWithoutSessionInput, MediaTrackUncheckedCreateWithoutSessionInput> | MediaTrackCreateWithoutSessionInput[] | MediaTrackUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutSessionInput | MediaTrackCreateOrConnectWithoutSessionInput[]
+    createMany?: MediaTrackCreateManySessionInputEnvelope
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+  }
+
+  export type ParticipantUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<ParticipantCreateWithoutSessionInput, ParticipantUncheckedCreateWithoutSessionInput> | ParticipantCreateWithoutSessionInput[] | ParticipantUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutSessionInput | ParticipantCreateOrConnectWithoutSessionInput[]
+    createMany?: ParticipantCreateManySessionInputEnvelope
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  }
+
+  export type MediaTrackUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<MediaTrackCreateWithoutSessionInput, MediaTrackUncheckedCreateWithoutSessionInput> | MediaTrackCreateWithoutSessionInput[] | MediaTrackUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutSessionInput | MediaTrackCreateOrConnectWithoutSessionInput[]
+    createMany?: MediaTrackCreateManySessionInputEnvelope
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutRecordingsNestedInput = {
+    create?: XOR<UserCreateWithoutRecordingsInput, UserUncheckedCreateWithoutRecordingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecordingsInput
+    upsert?: UserUpsertWithoutRecordingsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRecordingsInput, UserUpdateWithoutRecordingsInput>, UserUncheckedUpdateWithoutRecordingsInput>
+  }
+
+  export type ParticipantUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<ParticipantCreateWithoutSessionInput, ParticipantUncheckedCreateWithoutSessionInput> | ParticipantCreateWithoutSessionInput[] | ParticipantUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutSessionInput | ParticipantCreateOrConnectWithoutSessionInput[]
+    upsert?: ParticipantUpsertWithWhereUniqueWithoutSessionInput | ParticipantUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: ParticipantCreateManySessionInputEnvelope
+    set?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    disconnect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    delete?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    update?: ParticipantUpdateWithWhereUniqueWithoutSessionInput | ParticipantUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: ParticipantUpdateManyWithWhereWithoutSessionInput | ParticipantUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  }
+
+  export type MediaTrackUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<MediaTrackCreateWithoutSessionInput, MediaTrackUncheckedCreateWithoutSessionInput> | MediaTrackCreateWithoutSessionInput[] | MediaTrackUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutSessionInput | MediaTrackCreateOrConnectWithoutSessionInput[]
+    upsert?: MediaTrackUpsertWithWhereUniqueWithoutSessionInput | MediaTrackUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: MediaTrackCreateManySessionInputEnvelope
+    set?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    disconnect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    delete?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    update?: MediaTrackUpdateWithWhereUniqueWithoutSessionInput | MediaTrackUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: MediaTrackUpdateManyWithWhereWithoutSessionInput | MediaTrackUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: MediaTrackScalarWhereInput | MediaTrackScalarWhereInput[]
+  }
+
+  export type ParticipantUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<ParticipantCreateWithoutSessionInput, ParticipantUncheckedCreateWithoutSessionInput> | ParticipantCreateWithoutSessionInput[] | ParticipantUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutSessionInput | ParticipantCreateOrConnectWithoutSessionInput[]
+    upsert?: ParticipantUpsertWithWhereUniqueWithoutSessionInput | ParticipantUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: ParticipantCreateManySessionInputEnvelope
+    set?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    disconnect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    delete?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    update?: ParticipantUpdateWithWhereUniqueWithoutSessionInput | ParticipantUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: ParticipantUpdateManyWithWhereWithoutSessionInput | ParticipantUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  }
+
+  export type MediaTrackUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<MediaTrackCreateWithoutSessionInput, MediaTrackUncheckedCreateWithoutSessionInput> | MediaTrackCreateWithoutSessionInput[] | MediaTrackUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutSessionInput | MediaTrackCreateOrConnectWithoutSessionInput[]
+    upsert?: MediaTrackUpsertWithWhereUniqueWithoutSessionInput | MediaTrackUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: MediaTrackCreateManySessionInputEnvelope
+    set?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    disconnect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    delete?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    update?: MediaTrackUpdateWithWhereUniqueWithoutSessionInput | MediaTrackUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: MediaTrackUpdateManyWithWhereWithoutSessionInput | MediaTrackUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: MediaTrackScalarWhereInput | MediaTrackScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutParticipantsInput = {
+    create?: XOR<UserCreateWithoutParticipantsInput, UserUncheckedCreateWithoutParticipantsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutParticipantsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type RecordingSessionCreateNestedOneWithoutParticipantsInput = {
+    create?: XOR<RecordingSessionCreateWithoutParticipantsInput, RecordingSessionUncheckedCreateWithoutParticipantsInput>
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutParticipantsInput
+    connect?: RecordingSessionWhereUniqueInput
+  }
+
+  export type MediaTrackCreateNestedManyWithoutParticipantInput = {
+    create?: XOR<MediaTrackCreateWithoutParticipantInput, MediaTrackUncheckedCreateWithoutParticipantInput> | MediaTrackCreateWithoutParticipantInput[] | MediaTrackUncheckedCreateWithoutParticipantInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutParticipantInput | MediaTrackCreateOrConnectWithoutParticipantInput[]
+    createMany?: MediaTrackCreateManyParticipantInputEnvelope
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+  }
+
+  export type MediaTrackUncheckedCreateNestedManyWithoutParticipantInput = {
+    create?: XOR<MediaTrackCreateWithoutParticipantInput, MediaTrackUncheckedCreateWithoutParticipantInput> | MediaTrackCreateWithoutParticipantInput[] | MediaTrackUncheckedCreateWithoutParticipantInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutParticipantInput | MediaTrackCreateOrConnectWithoutParticipantInput[]
+    createMany?: MediaTrackCreateManyParticipantInputEnvelope
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneWithoutParticipantsNestedInput = {
+    create?: XOR<UserCreateWithoutParticipantsInput, UserUncheckedCreateWithoutParticipantsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutParticipantsInput
+    upsert?: UserUpsertWithoutParticipantsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutParticipantsInput, UserUpdateWithoutParticipantsInput>, UserUncheckedUpdateWithoutParticipantsInput>
+  }
+
+  export type RecordingSessionUpdateOneRequiredWithoutParticipantsNestedInput = {
+    create?: XOR<RecordingSessionCreateWithoutParticipantsInput, RecordingSessionUncheckedCreateWithoutParticipantsInput>
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutParticipantsInput
+    upsert?: RecordingSessionUpsertWithoutParticipantsInput
+    connect?: RecordingSessionWhereUniqueInput
+    update?: XOR<XOR<RecordingSessionUpdateToOneWithWhereWithoutParticipantsInput, RecordingSessionUpdateWithoutParticipantsInput>, RecordingSessionUncheckedUpdateWithoutParticipantsInput>
+  }
+
+  export type MediaTrackUpdateManyWithoutParticipantNestedInput = {
+    create?: XOR<MediaTrackCreateWithoutParticipantInput, MediaTrackUncheckedCreateWithoutParticipantInput> | MediaTrackCreateWithoutParticipantInput[] | MediaTrackUncheckedCreateWithoutParticipantInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutParticipantInput | MediaTrackCreateOrConnectWithoutParticipantInput[]
+    upsert?: MediaTrackUpsertWithWhereUniqueWithoutParticipantInput | MediaTrackUpsertWithWhereUniqueWithoutParticipantInput[]
+    createMany?: MediaTrackCreateManyParticipantInputEnvelope
+    set?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    disconnect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    delete?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    update?: MediaTrackUpdateWithWhereUniqueWithoutParticipantInput | MediaTrackUpdateWithWhereUniqueWithoutParticipantInput[]
+    updateMany?: MediaTrackUpdateManyWithWhereWithoutParticipantInput | MediaTrackUpdateManyWithWhereWithoutParticipantInput[]
+    deleteMany?: MediaTrackScalarWhereInput | MediaTrackScalarWhereInput[]
+  }
+
+  export type MediaTrackUncheckedUpdateManyWithoutParticipantNestedInput = {
+    create?: XOR<MediaTrackCreateWithoutParticipantInput, MediaTrackUncheckedCreateWithoutParticipantInput> | MediaTrackCreateWithoutParticipantInput[] | MediaTrackUncheckedCreateWithoutParticipantInput[]
+    connectOrCreate?: MediaTrackCreateOrConnectWithoutParticipantInput | MediaTrackCreateOrConnectWithoutParticipantInput[]
+    upsert?: MediaTrackUpsertWithWhereUniqueWithoutParticipantInput | MediaTrackUpsertWithWhereUniqueWithoutParticipantInput[]
+    createMany?: MediaTrackCreateManyParticipantInputEnvelope
+    set?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    disconnect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    delete?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    connect?: MediaTrackWhereUniqueInput | MediaTrackWhereUniqueInput[]
+    update?: MediaTrackUpdateWithWhereUniqueWithoutParticipantInput | MediaTrackUpdateWithWhereUniqueWithoutParticipantInput[]
+    updateMany?: MediaTrackUpdateManyWithWhereWithoutParticipantInput | MediaTrackUpdateManyWithWhereWithoutParticipantInput[]
+    deleteMany?: MediaTrackScalarWhereInput | MediaTrackScalarWhereInput[]
+  }
+
+  export type ParticipantCreateNestedOneWithoutTracksInput = {
+    create?: XOR<ParticipantCreateWithoutTracksInput, ParticipantUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: ParticipantCreateOrConnectWithoutTracksInput
+    connect?: ParticipantWhereUniqueInput
+  }
+
+  export type RecordingSessionCreateNestedOneWithoutTracksInput = {
+    create?: XOR<RecordingSessionCreateWithoutTracksInput, RecordingSessionUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutTracksInput
+    connect?: RecordingSessionWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ParticipantUpdateOneRequiredWithoutTracksNestedInput = {
+    create?: XOR<ParticipantCreateWithoutTracksInput, ParticipantUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: ParticipantCreateOrConnectWithoutTracksInput
+    upsert?: ParticipantUpsertWithoutTracksInput
+    connect?: ParticipantWhereUniqueInput
+    update?: XOR<XOR<ParticipantUpdateToOneWithWhereWithoutTracksInput, ParticipantUpdateWithoutTracksInput>, ParticipantUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type RecordingSessionUpdateOneRequiredWithoutTracksNestedInput = {
+    create?: XOR<RecordingSessionCreateWithoutTracksInput, RecordingSessionUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: RecordingSessionCreateOrConnectWithoutTracksInput
+    upsert?: RecordingSessionUpsertWithoutTracksInput
+    connect?: RecordingSessionWhereUniqueInput
+    update?: XOR<XOR<RecordingSessionUpdateToOneWithWhereWithoutTracksInput, RecordingSessionUpdateWithoutTracksInput>, RecordingSessionUncheckedUpdateWithoutTracksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6919,8 +11644,35 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type SessionCreateWithoutUserInput = {
-    id: string
+    id?: string
     expiresAt: Date | string
     token: string
     createdAt?: Date | string
@@ -6930,7 +11682,7 @@ export namespace Prisma {
   }
 
   export type SessionUncheckedCreateWithoutUserInput = {
-    id: string
+    id?: string
     expiresAt: Date | string
     token: string
     createdAt?: Date | string
@@ -6950,7 +11702,7 @@ export namespace Prisma {
   }
 
   export type AccountCreateWithoutUserInput = {
-    id: string
+    id?: string
     accountId: string
     providerId: string
     accessToken?: string | null
@@ -6965,7 +11717,7 @@ export namespace Prisma {
   }
 
   export type AccountUncheckedCreateWithoutUserInput = {
-    id: string
+    id?: string
     accountId: string
     providerId: string
     accessToken?: string | null
@@ -6986,6 +11738,64 @@ export namespace Prisma {
 
   export type AccountCreateManyUserInputEnvelope = {
     data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RecordingSessionCreateWithoutHostInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    participants?: ParticipantCreateNestedManyWithoutSessionInput
+    tracks?: MediaTrackCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionUncheckedCreateWithoutHostInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    participants?: ParticipantUncheckedCreateNestedManyWithoutSessionInput
+    tracks?: MediaTrackUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionCreateOrConnectWithoutHostInput = {
+    where: RecordingSessionWhereUniqueInput
+    create: XOR<RecordingSessionCreateWithoutHostInput, RecordingSessionUncheckedCreateWithoutHostInput>
+  }
+
+  export type RecordingSessionCreateManyHostInputEnvelope = {
+    data: RecordingSessionCreateManyHostInput | RecordingSessionCreateManyHostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ParticipantCreateWithoutUserInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    session: RecordingSessionCreateNestedOneWithoutParticipantsInput
+    tracks?: MediaTrackCreateNestedManyWithoutParticipantInput
+  }
+
+  export type ParticipantUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    sessionId: string
+    tracks?: MediaTrackUncheckedCreateNestedManyWithoutParticipantInput
+  }
+
+  export type ParticipantCreateOrConnectWithoutUserInput = {
+    where: ParticipantWhereUniqueInput
+    create: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput>
+  }
+
+  export type ParticipantCreateManyUserInputEnvelope = {
+    data: ParticipantCreateManyUserInput | ParticipantCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -7054,8 +11864,64 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
+  export type RecordingSessionUpsertWithWhereUniqueWithoutHostInput = {
+    where: RecordingSessionWhereUniqueInput
+    update: XOR<RecordingSessionUpdateWithoutHostInput, RecordingSessionUncheckedUpdateWithoutHostInput>
+    create: XOR<RecordingSessionCreateWithoutHostInput, RecordingSessionUncheckedCreateWithoutHostInput>
+  }
+
+  export type RecordingSessionUpdateWithWhereUniqueWithoutHostInput = {
+    where: RecordingSessionWhereUniqueInput
+    data: XOR<RecordingSessionUpdateWithoutHostInput, RecordingSessionUncheckedUpdateWithoutHostInput>
+  }
+
+  export type RecordingSessionUpdateManyWithWhereWithoutHostInput = {
+    where: RecordingSessionScalarWhereInput
+    data: XOR<RecordingSessionUpdateManyMutationInput, RecordingSessionUncheckedUpdateManyWithoutHostInput>
+  }
+
+  export type RecordingSessionScalarWhereInput = {
+    AND?: RecordingSessionScalarWhereInput | RecordingSessionScalarWhereInput[]
+    OR?: RecordingSessionScalarWhereInput[]
+    NOT?: RecordingSessionScalarWhereInput | RecordingSessionScalarWhereInput[]
+    id?: StringFilter<"RecordingSession"> | string
+    title?: StringFilter<"RecordingSession"> | string
+    description?: StringNullableFilter<"RecordingSession"> | string | null
+    createdAt?: DateTimeFilter<"RecordingSession"> | Date | string
+    scheduledAt?: DateTimeNullableFilter<"RecordingSession"> | Date | string | null
+    status?: StringFilter<"RecordingSession"> | string
+    hostId?: StringFilter<"RecordingSession"> | string
+  }
+
+  export type ParticipantUpsertWithWhereUniqueWithoutUserInput = {
+    where: ParticipantWhereUniqueInput
+    update: XOR<ParticipantUpdateWithoutUserInput, ParticipantUncheckedUpdateWithoutUserInput>
+    create: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput>
+  }
+
+  export type ParticipantUpdateWithWhereUniqueWithoutUserInput = {
+    where: ParticipantWhereUniqueInput
+    data: XOR<ParticipantUpdateWithoutUserInput, ParticipantUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ParticipantUpdateManyWithWhereWithoutUserInput = {
+    where: ParticipantScalarWhereInput
+    data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ParticipantScalarWhereInput = {
+    AND?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+    OR?: ParticipantScalarWhereInput[]
+    NOT?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+    id?: StringFilter<"Participant"> | string
+    name?: StringFilter<"Participant"> | string
+    isGuest?: BoolFilter<"Participant"> | boolean
+    userId?: StringNullableFilter<"Participant"> | string | null
+    sessionId?: StringFilter<"Participant"> | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -7063,10 +11929,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionCreateNestedManyWithoutHostInput
+    participants?: ParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -7074,6 +11942,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionUncheckedCreateNestedManyWithoutHostInput
+    participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -7101,6 +11971,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUpdateManyWithoutHostNestedInput
+    participants?: ParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -7112,10 +11984,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUncheckedUpdateManyWithoutHostNestedInput
+    participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -7123,10 +11997,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionCreateNestedManyWithoutHostInput
+    participants?: ParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     image?: string | null
@@ -7134,6 +12010,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionUncheckedCreateNestedManyWithoutHostInput
+    participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -7161,6 +12039,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUpdateManyWithoutHostNestedInput
+    participants?: ParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -7172,10 +12052,459 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUncheckedUpdateManyWithoutHostNestedInput
+    participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutRecordingsInput = {
+    id?: string
+    name: string
+    email: string
+    image?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    participants?: ParticipantCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRecordingsInput = {
+    id?: string
+    name: string
+    email: string
+    image?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRecordingsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRecordingsInput, UserUncheckedCreateWithoutRecordingsInput>
+  }
+
+  export type ParticipantCreateWithoutSessionInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    user?: UserCreateNestedOneWithoutParticipantsInput
+    tracks?: MediaTrackCreateNestedManyWithoutParticipantInput
+  }
+
+  export type ParticipantUncheckedCreateWithoutSessionInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    userId?: string | null
+    tracks?: MediaTrackUncheckedCreateNestedManyWithoutParticipantInput
+  }
+
+  export type ParticipantCreateOrConnectWithoutSessionInput = {
+    where: ParticipantWhereUniqueInput
+    create: XOR<ParticipantCreateWithoutSessionInput, ParticipantUncheckedCreateWithoutSessionInput>
+  }
+
+  export type ParticipantCreateManySessionInputEnvelope = {
+    data: ParticipantCreateManySessionInput | ParticipantCreateManySessionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MediaTrackCreateWithoutSessionInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    participant: ParticipantCreateNestedOneWithoutTracksInput
+  }
+
+  export type MediaTrackUncheckedCreateWithoutSessionInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    participantId: string
+  }
+
+  export type MediaTrackCreateOrConnectWithoutSessionInput = {
+    where: MediaTrackWhereUniqueInput
+    create: XOR<MediaTrackCreateWithoutSessionInput, MediaTrackUncheckedCreateWithoutSessionInput>
+  }
+
+  export type MediaTrackCreateManySessionInputEnvelope = {
+    data: MediaTrackCreateManySessionInput | MediaTrackCreateManySessionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutRecordingsInput = {
+    update: XOR<UserUpdateWithoutRecordingsInput, UserUncheckedUpdateWithoutRecordingsInput>
+    create: XOR<UserCreateWithoutRecordingsInput, UserUncheckedCreateWithoutRecordingsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRecordingsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRecordingsInput, UserUncheckedUpdateWithoutRecordingsInput>
+  }
+
+  export type UserUpdateWithoutRecordingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    participants?: ParticipantUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRecordingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ParticipantUpsertWithWhereUniqueWithoutSessionInput = {
+    where: ParticipantWhereUniqueInput
+    update: XOR<ParticipantUpdateWithoutSessionInput, ParticipantUncheckedUpdateWithoutSessionInput>
+    create: XOR<ParticipantCreateWithoutSessionInput, ParticipantUncheckedCreateWithoutSessionInput>
+  }
+
+  export type ParticipantUpdateWithWhereUniqueWithoutSessionInput = {
+    where: ParticipantWhereUniqueInput
+    data: XOR<ParticipantUpdateWithoutSessionInput, ParticipantUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type ParticipantUpdateManyWithWhereWithoutSessionInput = {
+    where: ParticipantScalarWhereInput
+    data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type MediaTrackUpsertWithWhereUniqueWithoutSessionInput = {
+    where: MediaTrackWhereUniqueInput
+    update: XOR<MediaTrackUpdateWithoutSessionInput, MediaTrackUncheckedUpdateWithoutSessionInput>
+    create: XOR<MediaTrackCreateWithoutSessionInput, MediaTrackUncheckedCreateWithoutSessionInput>
+  }
+
+  export type MediaTrackUpdateWithWhereUniqueWithoutSessionInput = {
+    where: MediaTrackWhereUniqueInput
+    data: XOR<MediaTrackUpdateWithoutSessionInput, MediaTrackUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type MediaTrackUpdateManyWithWhereWithoutSessionInput = {
+    where: MediaTrackScalarWhereInput
+    data: XOR<MediaTrackUpdateManyMutationInput, MediaTrackUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type MediaTrackScalarWhereInput = {
+    AND?: MediaTrackScalarWhereInput | MediaTrackScalarWhereInput[]
+    OR?: MediaTrackScalarWhereInput[]
+    NOT?: MediaTrackScalarWhereInput | MediaTrackScalarWhereInput[]
+    id?: StringFilter<"MediaTrack"> | string
+    type?: StringFilter<"MediaTrack"> | string
+    url?: StringFilter<"MediaTrack"> | string
+    duration?: FloatFilter<"MediaTrack"> | number
+    recordedAt?: DateTimeFilter<"MediaTrack"> | Date | string
+    participantId?: StringFilter<"MediaTrack"> | string
+    sessionId?: StringFilter<"MediaTrack"> | string
+  }
+
+  export type UserCreateWithoutParticipantsInput = {
+    id?: string
+    name: string
+    email: string
+    image?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionCreateNestedManyWithoutHostInput
+  }
+
+  export type UserUncheckedCreateWithoutParticipantsInput = {
+    id?: string
+    name: string
+    email: string
+    image?: string | null
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    recordings?: RecordingSessionUncheckedCreateNestedManyWithoutHostInput
+  }
+
+  export type UserCreateOrConnectWithoutParticipantsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutParticipantsInput, UserUncheckedCreateWithoutParticipantsInput>
+  }
+
+  export type RecordingSessionCreateWithoutParticipantsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    host: UserCreateNestedOneWithoutRecordingsInput
+    tracks?: MediaTrackCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionUncheckedCreateWithoutParticipantsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    hostId: string
+    tracks?: MediaTrackUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionCreateOrConnectWithoutParticipantsInput = {
+    where: RecordingSessionWhereUniqueInput
+    create: XOR<RecordingSessionCreateWithoutParticipantsInput, RecordingSessionUncheckedCreateWithoutParticipantsInput>
+  }
+
+  export type MediaTrackCreateWithoutParticipantInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    session: RecordingSessionCreateNestedOneWithoutTracksInput
+  }
+
+  export type MediaTrackUncheckedCreateWithoutParticipantInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    sessionId: string
+  }
+
+  export type MediaTrackCreateOrConnectWithoutParticipantInput = {
+    where: MediaTrackWhereUniqueInput
+    create: XOR<MediaTrackCreateWithoutParticipantInput, MediaTrackUncheckedCreateWithoutParticipantInput>
+  }
+
+  export type MediaTrackCreateManyParticipantInputEnvelope = {
+    data: MediaTrackCreateManyParticipantInput | MediaTrackCreateManyParticipantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutParticipantsInput = {
+    update: XOR<UserUpdateWithoutParticipantsInput, UserUncheckedUpdateWithoutParticipantsInput>
+    create: XOR<UserCreateWithoutParticipantsInput, UserUncheckedCreateWithoutParticipantsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutParticipantsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutParticipantsInput, UserUncheckedUpdateWithoutParticipantsInput>
+  }
+
+  export type UserUpdateWithoutParticipantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUpdateManyWithoutHostNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutParticipantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    recordings?: RecordingSessionUncheckedUpdateManyWithoutHostNestedInput
+  }
+
+  export type RecordingSessionUpsertWithoutParticipantsInput = {
+    update: XOR<RecordingSessionUpdateWithoutParticipantsInput, RecordingSessionUncheckedUpdateWithoutParticipantsInput>
+    create: XOR<RecordingSessionCreateWithoutParticipantsInput, RecordingSessionUncheckedCreateWithoutParticipantsInput>
+    where?: RecordingSessionWhereInput
+  }
+
+  export type RecordingSessionUpdateToOneWithWhereWithoutParticipantsInput = {
+    where?: RecordingSessionWhereInput
+    data: XOR<RecordingSessionUpdateWithoutParticipantsInput, RecordingSessionUncheckedUpdateWithoutParticipantsInput>
+  }
+
+  export type RecordingSessionUpdateWithoutParticipantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    host?: UserUpdateOneRequiredWithoutRecordingsNestedInput
+    tracks?: MediaTrackUpdateManyWithoutSessionNestedInput
+  }
+
+  export type RecordingSessionUncheckedUpdateWithoutParticipantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    hostId?: StringFieldUpdateOperationsInput | string
+    tracks?: MediaTrackUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type MediaTrackUpsertWithWhereUniqueWithoutParticipantInput = {
+    where: MediaTrackWhereUniqueInput
+    update: XOR<MediaTrackUpdateWithoutParticipantInput, MediaTrackUncheckedUpdateWithoutParticipantInput>
+    create: XOR<MediaTrackCreateWithoutParticipantInput, MediaTrackUncheckedCreateWithoutParticipantInput>
+  }
+
+  export type MediaTrackUpdateWithWhereUniqueWithoutParticipantInput = {
+    where: MediaTrackWhereUniqueInput
+    data: XOR<MediaTrackUpdateWithoutParticipantInput, MediaTrackUncheckedUpdateWithoutParticipantInput>
+  }
+
+  export type MediaTrackUpdateManyWithWhereWithoutParticipantInput = {
+    where: MediaTrackScalarWhereInput
+    data: XOR<MediaTrackUpdateManyMutationInput, MediaTrackUncheckedUpdateManyWithoutParticipantInput>
+  }
+
+  export type ParticipantCreateWithoutTracksInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    user?: UserCreateNestedOneWithoutParticipantsInput
+    session: RecordingSessionCreateNestedOneWithoutParticipantsInput
+  }
+
+  export type ParticipantUncheckedCreateWithoutTracksInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    userId?: string | null
+    sessionId: string
+  }
+
+  export type ParticipantCreateOrConnectWithoutTracksInput = {
+    where: ParticipantWhereUniqueInput
+    create: XOR<ParticipantCreateWithoutTracksInput, ParticipantUncheckedCreateWithoutTracksInput>
+  }
+
+  export type RecordingSessionCreateWithoutTracksInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    host: UserCreateNestedOneWithoutRecordingsInput
+    participants?: ParticipantCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionUncheckedCreateWithoutTracksInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+    hostId: string
+    participants?: ParticipantUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type RecordingSessionCreateOrConnectWithoutTracksInput = {
+    where: RecordingSessionWhereUniqueInput
+    create: XOR<RecordingSessionCreateWithoutTracksInput, RecordingSessionUncheckedCreateWithoutTracksInput>
+  }
+
+  export type ParticipantUpsertWithoutTracksInput = {
+    update: XOR<ParticipantUpdateWithoutTracksInput, ParticipantUncheckedUpdateWithoutTracksInput>
+    create: XOR<ParticipantCreateWithoutTracksInput, ParticipantUncheckedCreateWithoutTracksInput>
+    where?: ParticipantWhereInput
+  }
+
+  export type ParticipantUpdateToOneWithWhereWithoutTracksInput = {
+    where?: ParticipantWhereInput
+    data: XOR<ParticipantUpdateWithoutTracksInput, ParticipantUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type ParticipantUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneWithoutParticipantsNestedInput
+    session?: RecordingSessionUpdateOneRequiredWithoutParticipantsNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RecordingSessionUpsertWithoutTracksInput = {
+    update: XOR<RecordingSessionUpdateWithoutTracksInput, RecordingSessionUncheckedUpdateWithoutTracksInput>
+    create: XOR<RecordingSessionCreateWithoutTracksInput, RecordingSessionUncheckedCreateWithoutTracksInput>
+    where?: RecordingSessionWhereInput
+  }
+
+  export type RecordingSessionUpdateToOneWithWhereWithoutTracksInput = {
+    where?: RecordingSessionWhereInput
+    data: XOR<RecordingSessionUpdateWithoutTracksInput, RecordingSessionUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type RecordingSessionUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    host?: UserUpdateOneRequiredWithoutRecordingsNestedInput
+    participants?: ParticipantUpdateManyWithoutSessionNestedInput
+  }
+
+  export type RecordingSessionUncheckedUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    hostId?: StringFieldUpdateOperationsInput | string
+    participants?: ParticipantUncheckedUpdateManyWithoutSessionNestedInput
   }
 
   export type SessionCreateManyUserInput = {
-    id: string
+    id?: string
     expiresAt: Date | string
     token: string
     createdAt?: Date | string
@@ -7185,7 +12514,7 @@ export namespace Prisma {
   }
 
   export type AccountCreateManyUserInput = {
-    id: string
+    id?: string
     accountId: string
     providerId: string
     accessToken?: string | null
@@ -7197,6 +12526,22 @@ export namespace Prisma {
     password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type RecordingSessionCreateManyHostInput = {
+    id?: string
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    scheduledAt?: Date | string | null
+    status?: string
+  }
+
+  export type ParticipantCreateManyUserInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    sessionId: string
   }
 
   export type SessionUpdateWithoutUserInput = {
@@ -7272,6 +12617,162 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecordingSessionUpdateWithoutHostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    participants?: ParticipantUpdateManyWithoutSessionNestedInput
+    tracks?: MediaTrackUpdateManyWithoutSessionNestedInput
+  }
+
+  export type RecordingSessionUncheckedUpdateWithoutHostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    participants?: ParticipantUncheckedUpdateManyWithoutSessionNestedInput
+    tracks?: MediaTrackUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type RecordingSessionUncheckedUpdateManyWithoutHostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ParticipantUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    session?: RecordingSessionUpdateOneRequiredWithoutParticipantsNestedInput
+    tracks?: MediaTrackUpdateManyWithoutParticipantNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    sessionId?: StringFieldUpdateOperationsInput | string
+    tracks?: MediaTrackUncheckedUpdateManyWithoutParticipantNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    sessionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ParticipantCreateManySessionInput = {
+    id?: string
+    name: string
+    isGuest?: boolean
+    userId?: string | null
+  }
+
+  export type MediaTrackCreateManySessionInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    participantId: string
+  }
+
+  export type ParticipantUpdateWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneWithoutParticipantsNestedInput
+    tracks?: MediaTrackUpdateManyWithoutParticipantNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    tracks?: MediaTrackUncheckedUpdateManyWithoutParticipantNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateManyWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    isGuest?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MediaTrackUpdateWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participant?: ParticipantUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type MediaTrackUncheckedUpdateWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participantId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaTrackUncheckedUpdateManyWithoutSessionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    participantId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaTrackCreateManyParticipantInput = {
+    id?: string
+    type: string
+    url: string
+    duration: number
+    recordedAt?: Date | string
+    sessionId: string
+  }
+
+  export type MediaTrackUpdateWithoutParticipantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: RecordingSessionUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type MediaTrackUncheckedUpdateWithoutParticipantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaTrackUncheckedUpdateManyWithoutParticipantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    duration?: FloatFieldUpdateOperationsInput | number
+    recordedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessionId?: StringFieldUpdateOperationsInput | string
   }
 
 
