@@ -20,7 +20,8 @@
 /.next/
 /out/
 
-app/generated/prisma/client/
+app/generated/
+
 
 # production
 /build
