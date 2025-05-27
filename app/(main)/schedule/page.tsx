@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
 import { toast } from "sonner";
+import { enUS } from "date-fns/locale";
 
 interface ScheduledEvent {
   id: string;
@@ -32,6 +33,7 @@ interface ScheduledEvent {
 export default function ScheduleComponent() {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [events, setEvents] = useState<ScheduledEvent[]>([]);
+  const [open, setOpen] = useState(false);
   const [newEvent, setNewEvent] = useState({
     title: "",
     date: new Date(),
@@ -43,18 +45,23 @@ export default function ScheduleComponent() {
       toast.error("Please fill in all fields.");
       return;
     }
-    if (newEvent.date < new Date()) {
+
+    const eventDate = new Date(newEvent.date);
+    if (eventDate < new Date()) {
       toast.error("Event date cannot be in the past.");
       return;
     }
+
     if (newEvent.participants.trim() === "") {
       toast.error("Please add at least one participant.");
       return;
     }
+
     const participantsArray = newEvent.participants
       .split(",")
       .map((p) => p.trim())
       .filter((p) => p !== "");
+
     const response = await fetch("/api/events/schedule", {
       method: "POST",
       headers: {
@@ -62,24 +69,33 @@ export default function ScheduleComponent() {
       },
       body: JSON.stringify({
         title: newEvent.title,
-        date: newEvent.date,
+        date: eventDate.toISOString(),
         participants: participantsArray,
       }),
     });
+
     if (!response.ok) {
       toast.error("Failed to schedule event.");
       return;
     }
+
     const data = await response.json();
-    setEvents((prevEvents) => [...prevEvents, data]);
+
+    setEvents((prevEvents) => [
+      ...prevEvents,
+      { ...data, date: new Date(data.date) },
+    ]);
+
     setNewEvent({ title: "", date: new Date(), participants: "" });
-  };
+    toast.success("Event scheduled successfully!");
+    setOpen(false);
+  };  
 
   return (
     <div className="py-6 max-w-7xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 className="text-2xl font-bold">Schedule</h2>
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button className="w-full sm:w-auto">
               <Plus className="h-4 w-4 sm:mr-2" />
@@ -148,10 +164,14 @@ export default function ScheduleComponent() {
               mode="single"
               selected={date}
               onSelect={setDate}
-              className="rounded-md border p-1"
+              locale={enUS}
+              className="rounded-md p-1 border border-muted"
+              defaultMonth={new Date()}
+              initialFocus
               classNames={{
-                day: "h-9 w-9 text-sm",
-                head_cell: "text-muted-foreground text-sm font-normal",
+                day: "h-9 w-9 text-sm text-center rounded-md hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                head_cell:
+                  "text-muted-foreground text-sm font-normal text-center p-2.5",
               }}
             />
           </CardContent>
