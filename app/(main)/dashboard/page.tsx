@@ -48,7 +48,6 @@ const page: React.FC = () => {
         <CreateSessionButton />
       </div>
 
-      {/* Recent Recordings */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Recent Recordings</h2>
@@ -86,7 +85,6 @@ const page: React.FC = () => {
         </div>
       </div>
 
-      {/* Upcoming Sessions */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Upcoming Sessions</h2>
