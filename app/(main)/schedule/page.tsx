@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,11 +23,20 @@ import { Plus } from "lucide-react";
 import { toast } from "sonner";
 import { enUS } from "date-fns/locale";
 
+interface Participant {
+  id?: string;
+  name: string;
+  isGuest?: boolean;
+  userId?: string;
+}
+
 interface ScheduledEvent {
   id: string;
   title: string;
-  date: Date;
-  participants: string[];
+  description?: string;
+  hostId?: string;
+  scheduledAt: Date;
+  participants: Participant[];
 }
 
 export default function ScheduleComponent() {
@@ -36,9 +45,27 @@ export default function ScheduleComponent() {
   const [open, setOpen] = useState(false);
   const [newEvent, setNewEvent] = useState({
     title: "",
-    date: new Date(),
+    date: "",
     participants: "",
   });
+
+  const getScheduledEvents = async () => {
+    const response = await fetch("/api/events/schedule");
+    if (!response.ok) {
+      toast.error("Failed to fetch scheduled events.");
+      return;
+    }
+    const data = await response.json();
+    const parsedData = data.map((event: any) => ({
+      ...event,
+      scheduledAt: new Date(event.scheduledAt),
+    }));
+    setEvents(parsedData);
+  };
+
+  useEffect(() => {
+    getScheduledEvents();
+  }, [date]);
 
   const handleAddEvent = async () => {
     if (!newEvent.title || !newEvent.date || !newEvent.participants) {
@@ -52,15 +79,10 @@ export default function ScheduleComponent() {
       return;
     }
 
-    if (newEvent.participants.trim() === "") {
-      toast.error("Please add at least one participant.");
-      return;
-    }
-
     const participantsArray = newEvent.participants
       .split(",")
-      .map((p) => p.trim())
-      .filter((p) => p !== "");
+      .map((name) => ({ name: name.trim() }))
+      .filter((p) => p.name);
 
     const response = await fetch("/api/events/schedule", {
       method: "POST",
@@ -69,7 +91,7 @@ export default function ScheduleComponent() {
       },
       body: JSON.stringify({
         title: newEvent.title,
-        date: eventDate.toISOString(),
+        scheduledAt: eventDate.toISOString(),
         participants: participantsArray,
       }),
     });
@@ -80,16 +102,13 @@ export default function ScheduleComponent() {
     }
 
     const data = await response.json();
+    data.scheduledAt = new Date(data.scheduledAt);
 
-    setEvents((prevEvents) => [
-      ...prevEvents,
-      { ...data, date: new Date(data.date) },
-    ]);
-
-    setNewEvent({ title: "", date: new Date(), participants: "" });
+    setEvents((prev) => [...prev, data]);
+    setNewEvent({ title: "", date: "", participants: "" });
     toast.success("Event scheduled successfully!");
     setOpen(false);
-  };  
+  };
 
   return (
     <div className="py-6 max-w-7xl mx-auto space-y-6">
@@ -115,7 +134,6 @@ export default function ScheduleComponent() {
                   onChange={(e) =>
                     setNewEvent({ ...newEvent, title: e.target.value })
                   }
-                  className="w-full"
                 />
               </div>
               <div className="space-y-2">
@@ -123,13 +141,10 @@ export default function ScheduleComponent() {
                 <Input
                   id="date"
                   type="datetime-local"
+                  value={newEvent.date}
                   onChange={(e) =>
-                    setNewEvent({
-                      ...newEvent,
-                      date: new Date(e.target.value),
-                    })
+                    setNewEvent({ ...newEvent, date: e.target.value })
                   }
-                  className="w-full"
                 />
               </div>
               <div className="space-y-2">
@@ -140,14 +155,14 @@ export default function ScheduleComponent() {
                   id="participants"
                   value={newEvent.participants}
                   onChange={(e) =>
-                    setNewEvent({ ...newEvent, participants: e.target.value })
+                    setNewEvent({
+                      ...newEvent,
+                      participants: e.target.value,
+                    })
                   }
-                  className="w-full"
                 />
               </div>
-              <Button onClick={handleAddEvent} className="w-full sm:w-auto">
-                Schedule Event
-              </Button>
+              <Button onClick={handleAddEvent}>Schedule Event</Button>
             </div>
           </DialogContent>
         </Dialog>
@@ -159,15 +174,15 @@ export default function ScheduleComponent() {
             <CardTitle>Calendar</CardTitle>
             <CardDescription>Select a date to view events</CardDescription>
           </CardHeader>
-          <CardContent className="p-2">
+          <CardContent>
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
               locale={enUS}
-              className="rounded-md p-1 border border-muted"
               defaultMonth={new Date()}
               initialFocus
+              className="rounded-md p-1"
               classNames={{
                 day: "h-9 w-9 text-sm text-center rounded-md hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                 head_cell:
@@ -189,41 +204,29 @@ export default function ScheduleComponent() {
               {events
                 .filter(
                   (event) =>
-                    event.date.toLocaleDateString() ===
-                    date?.toLocaleDateString()
+                    event.scheduledAt.toDateString() === date?.toDateString()
                 )
                 .map((event) => (
                   <Card key={event.id} className="bg-muted/40">
                     <CardContent className="p-4">
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div className="flex-1">
-                          <h3 className="font-medium text-base md:text-lg">
-                            {event.title}
-                          </h3>
+                        <div>
+                          <h3 className="font-medium text-lg">{event.title}</h3>
                           <p className="text-sm text-muted-foreground">
-                            {event.date.toLocaleDateString()}{" "}
-                            <span className="hidden sm:inline">
-                              {event.date.toLocaleTimeString()}
-                            </span>
-                            <span className="sm:hidden">
-                              {event.date.toLocaleTimeString([], {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })}
-                            </span>
+                            {event.scheduledAt.toLocaleString()}
                           </p>
                           <div className="mt-2 flex flex-wrap gap-2">
-                            {event.participants.map((participant) => (
+                            {event.participants.map((p) => (
                               <span
-                                key={participant}
+                                key={p.id ?? p.name}
                                 className="px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs sm:text-sm"
                               >
-                                {participant.trim()}
+                                {p.name}
                               </span>
                             ))}
                           </div>
                         </div>
-                        <Button variant="ghost" size="sm" className="self-end">
+                        <Button variant="ghost" size="sm">
                           Edit
                         </Button>
                       </div>
@@ -232,9 +235,9 @@ export default function ScheduleComponent() {
                 ))}
               {events.filter(
                 (event) =>
-                  event.date.toLocaleDateString() === date?.toLocaleDateString()
+                  event.scheduledAt.toDateString() === date?.toDateString()
               ).length === 0 && (
-                <p className="text-muted-foreground text-center py-4 md:py-6">
+                <p className="text-muted-foreground text-center py-4">
                   No events scheduled for this day
                 </p>
               )}

@@ -2,47 +2,60 @@ import { NextRequest } from "next/server";
 import prisma from "@/lib/db";
 import getUserSession from "@/utils/getUserData";
 
-export async function POST(req: NextRequest) {
-  console.log("Received request to schedule event");
-
-  const bodyText = await req.text();
-  console.log("Request body:", bodyText);
-
-  const { title, date, participants } = JSON.parse(bodyText);
-
+export async function GET(req: NextRequest) {
   const session = await getUserSession();
-  if (!session?.user) {
-    return new Response("Unauthorized", { status: 401 });
-  }
+  if (!session?.user) return new Response("Unauthorized", { status: 401 });
 
-  if (!title || !date || !participants) {
+  try {
+    const events = await prisma.recordingSession.findMany({
+      where: {
+        hostId: session.user.id,
+      },
+      include: {
+        participants: true,
+      },
+      orderBy: {
+        scheduledAt: "asc",
+      },
+    });
+
+    return new Response(JSON.stringify(events), { status: 200 });
+  } catch (error) {
+    return new Response("Failed to fetch scheduled events", { status: 500 });
+  }
+}
+
+export async function POST(req: NextRequest) {
+  const session = await getUserSession();
+  if (!session?.user) return new Response("Unauthorized", { status: 401 });
+
+  const body = await req.json();
+  const { title, scheduledAt, participants } = body;
+
+  if (!title || !scheduledAt || !participants) {
     return new Response("Missing fields", { status: 400 });
   }
 
-  const newEvent = {
-    id: Date.now().toString(),
-    title,
-    date: new Date(date),
-    participants,
-  };
+  try {
+    const response = await prisma.recordingSession.create({
+      data: {
+        title,
+        scheduledAt: new Date(scheduledAt),
+        hostId: session.user.id,
+        participants: {
+          create: participants.map((p: { name: string }) => ({
+            name: p.name,
+            isGuest: true,
+          })),
+        },
+      },
+      include: {
+        participants: true,
+      },
+    });
 
-  const response = await prisma.recordingSession.create({
-    data: {
-      title: newEvent.title,
-      scheduledAt: newEvent.date,
-      hostId: session.user.id,
-      participants: {
-        create: participants.map((participant: string) => ({
-          name: participant.trim(),
-          isGuest: true 
-        }))
-      }
-    },
-  });
-
-  if (!response) {
+    return new Response(JSON.stringify(response), { status: 201 });
+  } catch (error) {
     return new Response("Failed to create event", { status: 500 });
   }
-
-  return new Response(JSON.stringify(newEvent), { status: 201 });
 }
