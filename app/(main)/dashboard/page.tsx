@@ -1,15 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, ChevronRight, Clock, Plus } from "lucide-react";
+import { Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import CreateSessionButton from "@/components/dashboard/CreateSessionButton";
 import RecentRecording from "@/components/dashboard/RecentRecording";
 import UpcomingSession from "@/components/dashboard/UpcomingSession";
 import { toast } from "@/hooks/use-toast";
+import { Recording } from "@/types/types";
 
 const page: React.FC = () => {
+  const [upcomingSessions, setUpcomingSessions] = useState<Recording[]>([]);
+
+  const getUpcomingSessions = async () => {
+    try{
+      const res = await fetch("/api/events/upcoming", {
+        method: "GET",
+      });
+      if (!res.ok) {
+        throw new Error("Failed to fetch upcoming sessions");
+      }
+      
+      const data = await res.json();
+      console.log(data,"response from backend");
+      setUpcomingSessions(data);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error fetching sessions",
+        description: error instanceof Error ? error.message : "An unknown error occurred",
+      });
+    }
+  };
+
   const handlePlayRecording = () => {
     toast({
       title: "Opening playback...",
@@ -35,6 +60,10 @@ const page: React.FC = () => {
       description: "You can now modify your scheduled session",
     });
   };
+
+  useEffect(() => {
+    getUpcomingSessions();
+  },[upcomingSessions])
 
   return (
     <div className="space-y-8">
@@ -96,24 +125,26 @@ const page: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <UpcomingSession
-            title="Interview with Jane Smith"
-            date="May 15, 2025"
-            time="2:00 PM - 3:00 PM"
-            guests={2}
-            onJoin={handleJoinSession}
-            onEdit={handleEditSession}
-          />
-
-          <UpcomingSession
-            title="Weekly Team Meeting"
-            date="May 17, 2025"
-            time="10:00 AM - 11:00 AM"
-            guests={5}
-            onJoin={handleJoinSession}
-            onEdit={handleEditSession}
-          />
-
+          {upcomingSessions.length > 0 ? (
+            upcomingSessions.map((session) => (
+              <UpcomingSession
+                key={session.id}
+                title={session.title}
+                date={new Date(session.createdAt).toLocaleDateString()}
+                time={new Date(session.scheduledAt!).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+                guests={session?.participants.length}
+                onJoin={handleJoinSession}
+                onEdit={handleEditSession}
+              />
+            ))
+          ) : (
+            <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center text-muted-foreground">
+              No upcoming sessions scheduled.
+            </div>
+          )}
           <Link
             href="/schedule"
             className="flex flex-col items-center justify-center border-2 border-dashed border-muted rounded-lg p-6 h-full min-h-[200px] hover:border-primary/50 transition-colors"

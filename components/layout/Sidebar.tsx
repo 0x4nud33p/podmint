@@ -16,10 +16,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: Home, path: "/dashboard" },
     { id: "record", label: "Record New", icon: Mic, path: "/record" },
-    // { id: "library", label: "My Library", icon: Headphones, path: "/library" },
     { id: "schedule", label: "Schedule", icon: Calendar, path: "/schedule" },
     { id: "profile", label: "Profile", icon: User, path: "/profile" },
-    { id: "settings", label: "Settings", icon: Settings, path: "/settings" },
   ];
 
   return (

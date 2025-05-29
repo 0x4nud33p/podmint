@@ -13,14 +13,7 @@ import GuestInvite from "@/components/recording/GuestInvite";
 import { toast } from "@/hooks/use-toast";
 import { createPeerConnection } from "@/utils/webrtc";
 import { socket } from "@/utils/signaling";
-
-interface Participant {
-  id: string;
-  name: string;
-  stream: MediaStream;
-  isHost?: boolean;
-  isMuted: boolean;
-}
+import { Participant } from "@/types/types";
 
 const RecordingStudio: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
