@@ -13,6 +13,7 @@ import { Recording } from "@/types/types";
 
 const page: React.FC = () => {
   const [upcomingSessions, setUpcomingSessions] = useState<Recording[]>([]);
+  const [recentRecordings, setRecentRecordings] = useState<Recording[]>([]);
 
   const getUpcomingSessions = async () => {
     try{
@@ -34,6 +35,27 @@ const page: React.FC = () => {
       });
     }
   };
+
+  const getRecentRecordings = async () => {
+    try {
+      const res = await fetch("/api/events/recent", {
+        method: "GET",
+      });
+      if (!res.ok) {
+        throw new Error("Failed to fetch recent recordings");
+      }
+      
+      const data = await res.json();
+      console.log(data, "response from backend");
+      setRecentRecordings(data);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error fetching recordings",
+        description: error instanceof Error ? error.message : "An unknown error occurred",
+      });
+    }
+  }
 
   const handlePlayRecording = () => {
     toast({
@@ -63,7 +85,8 @@ const page: React.FC = () => {
 
   useEffect(() => {
     getUpcomingSessions();
-  },[upcomingSessions])
+    getRecentRecordings();
+  },[]);
 
   return (
     <div className="space-y-8">
@@ -88,29 +111,23 @@ const page: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <RecentRecording
-            title="Interview with John Doe"
-            date="May 10, 2025"
-            duration="48:22"
-            onPlay={handlePlayRecording}
-            onDownload={handleDownloadRecording}
-          />
-
-          <RecentRecording
-            title="Weekly Podcast - Episode 42"
-            date="May 8, 2025"
-            duration="1:12:05"
-            onPlay={handlePlayRecording}
-            onDownload={handleDownloadRecording}
-          />
-
-          <RecentRecording
-            title="Project Update Meeting"
-            date="May 5, 2025"
-            duration="32:15"
-            onPlay={handlePlayRecording}
-            onDownload={handleDownloadRecording}
-          />
+          {
+            recentRecordings.length > 0 ? (
+              recentRecordings.map((recording) => (
+                <RecentRecording
+                  key={recording.id}
+                  title={recording.title}
+                  date={new Date(recording.createdAt).toLocaleDateString()}
+                  duration={(recording.tracks?.map(track => track.duration).reduce((acc, curr) => acc + curr, 0) || 0).toString()}
+                  onPlay={handlePlayRecording}
+                  onDownload={handleDownloadRecording}
+                />
+              ))
+            ) : (
+              <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center text-muted-foreground">
+                No recent recordings available.
+              </div>
+            )}
         </div>
       </div>
 
