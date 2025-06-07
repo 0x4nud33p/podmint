@@ -14,6 +14,7 @@ import { toast } from "@/hooks/use-toast";
 import { createPeerConnection } from "@/utils/webrtc";
 import { socket } from "@/utils/signaling";
 import { Participant } from "@/types/types";
+import { DialogTitle } from "@/components/ui/dialog";
 
 const RecordingStudio: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -218,6 +219,9 @@ const RecordingStudio: React.FC = () => {
             <Button>Invite Guest</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-md">
+            <DialogTitle className="text-lg font-semibold">
+              Invite a Guest
+            </DialogTitle>
             <GuestInvite
               sessionId="demo123"
               onClose={() => setShowInvite(false)}
