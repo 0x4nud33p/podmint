@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen flex-col ml-4">
+        <div className="flex min-h-screen flex-col">
           <AppHeader />
           <div className="flex flex-1">
             <Sidebar className="hidden md:block" />
