@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import prisma from "@/lib/db";
 import getUserSession from "@/utils/getUserData";
 
@@ -8,13 +7,18 @@ export async function GET() {
     try{
         const recordings = await prisma.recordingSession.findMany({
             where: {
-                hostId: session.user.id,
+              hostId: session.user.id,
+              status: "completed",
             },
             orderBy: {
-                createdAt: "desc",
+              createdAt: "desc",
             },
             take: 10,
-        });
+            include: {
+              participants: true,
+              tracks: true,
+            },
+          });
         return new Response(JSON.stringify(recordings), { status: 200 });
     } catch (error) {
         return new Response("Failed to fetch recordings", { status: 500 });
